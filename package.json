@@ -1,0 +1,28 @@
+{
+  "name": "maliken.mf.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xMalikeNx/mf.messenger.praktikum.yandex.git"
+  },
+  "author": "Maliken",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xMalikeNx/mf.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/xMalikeNx/mf.messenger.praktikum.yandex#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
+  }
+}
