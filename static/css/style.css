@@ -1,0 +1,232 @@
+@import './font-awesome/css/font-awesome.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.app {
+  width: 100vw;
+  height: auto;
+  overflow: hidden;
+}
+
+.left-panel {
+  width: 60px;
+  height: 100vh;
+  overflow: auto;
+  background: #383838;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+}
+
+.left-panel .left-panel__list .left-panel__list__item {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dadada;
+  cursor: pointer;
+  transition: 0.3s background ease;
+}
+
+.left-panel .left-panel__list .left-panel__list__item:hover {
+  background: #484848;
+}
+
+.left-panel .left-panel__list .left-panel__list__item i.fa {
+  font-size: 24px;
+}
+
+.left-panel .left-panel__menu {
+  position: fixed;
+  display: none;
+  left: 60px;
+  width: 320px;
+  height: 100vh;
+  background: #383838;
+  top: 0;
+  z-index: 1002;
+  border-left: 1px solid #464646;
+}
+
+.left-panel .left-panel__menu.opened {
+  display: block;
+}
+
+.left-panel .left-panel__menu .left-panel__menu__logo {
+  padding: 10px 15px 0 15px;
+  font-size: 36px;
+  color: #dadada;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.left-panel__menu .left-panel__menu__nav-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.left-panel
+  .left-panel__menu
+  .left-panel__menu__nav-list
+  .left-panel__menu__nav-list__item {
+  color: #dfdfdf;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s background ease;
+}
+
+.left-panel
+  .left-panel__menu
+  .left-panel__menu__nav-list
+  .left-panel__menu__nav-list__item
+  a {
+  text-decoration: none;
+  color: #dfdfdf;
+  padding: 12px 15px;
+  display: block;
+}
+
+.left-panel
+  .left-panel__menu
+  .left-panel__menu__nav-list
+  .left-panel__menu__nav-list__item.current {
+  background: #464646;
+}
+
+.left-panel
+  .left-panel__menu
+  .left-panel__menu__nav-list
+  .left-panel__menu__nav-list__item:not(.current):hover {
+  background: #414141;
+}
+
+.dialogs-panel {
+  width: 320px;
+  height: 100vh;
+  padding: 35px 10px;
+  position: fixed;
+  left: 60px;
+  top: 0;
+  background: linear-gradient(
+    174.98deg,
+    rgba(0, 163, 255, 0.09) 0%,
+    rgba(165, 19, 255, 0.15) 100%
+  );
+  z-index: 1000;
+}
+
+.dialogs-panel .search-input {
+  margin-bottom: 25px;
+}
+
+.dialogs-panel .dialogs__list {
+  height: 100%;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 30px;
+}
+
+.dialogs-panel .dialogs__list::-webkit-scrollbar {
+  display: none;
+}
+
+.dialog-item {
+  padding: 9px;
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  padding-right: 45px;
+}
+
+.dialog-item.current {
+  background: rgba(196, 196, 196, 0.35);
+}
+
+.dialog-item .dialog-item__avatar {
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: blueviolet;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+}
+
+.dialog-item .dialog-item__info {
+  margin-left: 15px;
+  padding-top: 3px;
+}
+
+.dialog-item .dialog-item__info .dialog-item__info__username {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.dialog-item .dialog-item__info .dialog-item__info__message {
+  color: #464646;
+  font-size: 14px;
+}
+
+.dialog-item .dialog-item__status {
+  position: absolute;
+  height: 100%;
+  right: 15px;
+  top: 10px;
+  text-align: right;
+}
+
+.dialog-item .dialog-item__status .dialog-item__status__check {
+  margin-right: 5px;
+  position: relative;
+  top: -1px;
+}
+
+.dialog-item .dialog-item__status .dialog-item__status__time {
+  font-size: 13px;
+  color: #464646;
+}
+
+.dialog-item .dialog-item__status .dialog-item__status__indicator {
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #58adfb;
+  border-radius: 50%;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  color: #fff;
+  font-weight: bold;
+}
+
+.search-input .search-input__field {
+  width: 100%;
+  padding: 10px 15px;
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  outline: none;
+  transition: 0.3s border-color ease;
+}
+
+.search-input .search-input__field:focus {
+  border-color: #bf8eef;
+}

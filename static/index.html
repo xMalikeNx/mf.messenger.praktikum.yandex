@@ -3,9 +3,316 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>MNMessager</title>
   </head>
   <body>
-    <h1>Hello world</h1>
+    <div class="app">
+      <div class="left-panel">
+        <ul class="left-panel__list">
+          <li class="left-panel__list__item">
+            <i class="fa fa-bars"></i>
+          </li>
+        </ul>
+        <div class="left-panel__menu">
+          <div class="left-panel__menu__logo">
+            MNMessager
+          </div>
+          <ul class="left-panel__menu__nav-list">
+            <li class="left-panel__menu__nav-list__item">
+              <a href="#">Профиль</a>
+            </li>
+            <li class="left-panel__menu__nav-list__item current">
+              <a href="#">Еще какой-то пункт</a>
+            </li>
+            <li class="left-panel__menu__nav-list__item">
+              <a href="#">И еще один пункт</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dialogs-panel">
+        <div class="search-input">
+          <input class="search-input__field" type="text" placeholder="Поиск" />
+        </div>
+        <ul class=".dialogs-panel dialogs__list">
+          <div class="dialog-item current">
+            <div class="dialog-item__avatar" style="background: #b98eff;">
+              М
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Мур
+              </div>
+              <div class="dialog-item__info__message">
+                Ууууууууууууу какой :3
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                12:00
+              </time>
+              <div class="dialog-item__status__indicator">
+                1
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #3ed2dc;">
+              КП
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Кот Пушок
+              </div>
+              <div class="dialog-item__info__message">
+                <strong>Я:</strong> я сейчас очень занят,<br />давай потом
+                обсудим э...
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <span class="dialog-item__status__check">
+                <img src="/img/icons/check.svg" alt="check" />
+              </span>
+              <time class="dialog-item__status__time">
+                ср
+              </time>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #6fafeb;">
+              Д
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Деканат
+              </div>
+              <div class="dialog-item__info__message">
+                Ты когда собираешься сдавать свои хвосты?
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                14:11
+              </time>
+              <div class="dialog-item__status__indicator">
+                22
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #a9e27c;">
+              ЕР
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Евгений Радченко
+              </div>
+              <div class="dialog-item__info__message">
+                Норм катка, давай по новой)))
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                14:11
+              </time>
+              <div class="dialog-item__status__indicator">
+                1
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #efbd5b;">
+              Д
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Даха
+              </div>
+              <div class="dialog-item__info__message">
+                Вечером на природу)
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <span class="dialog-item__status__check">
+                <img src="/img/icons/check.svg" alt="check" />
+              </span>
+              <time class="dialog-item__status__time">
+                12:32
+              </time>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #eb6f9b;">
+              ДС
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Джон Сноу
+              </div>
+              <div class="dialog-item__info__message">
+                Дедлайн близко...
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                11:04
+              </time>
+              <div class="dialog-item__status__indicator">
+                8
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #7dd3c4;">
+              ТБ
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Таксенок Буч
+              </div>
+              <div class="dialog-item__info__message">
+                Я знаю, что вы там говорите о котиках ((
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                14:23
+              </time>
+              <div class="dialog-item__status__indicator">
+                1
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #eb6fc1;">
+              P
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Pudge
+              </div>
+              <div class="dialog-item__info__message">
+                <strong>Я:</strong> да ладно тебе расстраиваться...
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <span class="dialog-item__status__check">
+                <img src="/img/icons/check.svg" alt="check" />
+              </span>
+              <time class="dialog-item__status__time">
+                11:55
+              </time>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #716feb;">
+              DR
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Drow Ranger
+              </div>
+              <div class="dialog-item__info__message">
+                <strong>Я:</strong> отстань от меня, синяя
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <span class="dialog-item__status__check">
+                <img src="/img/icons/check.svg" alt="check" />
+              </span>
+              <time class="dialog-item__status__time">
+                вс
+              </time>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #716feb;">
+              DR
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Drow Ranger
+              </div>
+              <div class="dialog-item__info__message">
+                <strong>Я:</strong> отстань от меня, синяя
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                18:41
+              </time>
+              <div class="dialog-item__status__indicator">
+                2
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #8492d7;">
+              W
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                Windranger
+              </div>
+              <div class="dialog-item__info__message">
+                Я устала сидеть в таверне, заходи в доту...
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                17:43
+              </time>
+              <div class="dialog-item__status__indicator">
+                1
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #52d27d;">
+              H
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                HON
+              </div>
+              <div class="dialog-item__info__message">
+                Как ты смеешь играть в доту, когда есть я? -_-
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                14:11
+              </time>
+              <div class="dialog-item__status__indicator">
+                14
+              </div>
+            </div>
+          </div>
+          <div class="dialog-item">
+            <div class="dialog-item__avatar" style="background: #8bbe63;">
+              L
+            </div>
+            <div class="dialog-item__info">
+              <div class="dialog-item__info__username">
+                LOL
+              </div>
+              <div class="dialog-item__info__message">
+                Посторонитесь, господа. Этот человек мой ))
+              </div>
+            </div>
+            <div class="dialog-item__status">
+              <time class="dialog-item__status__time">
+                9:32
+              </time>
+              <div class="dialog-item__status__indicator">
+                1
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+      <div class="chat-panel"></div>
+    </div>
   </body>
 </html>
