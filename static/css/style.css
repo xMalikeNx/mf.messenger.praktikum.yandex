@@ -132,7 +132,7 @@
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  padding-bottom: 30px;
+  padding-bottom: 45px;
 }
 
 .dialogs-panel .dialogs__list::-webkit-scrollbar {
@@ -146,6 +146,11 @@
   position: relative;
   cursor: pointer;
   padding-right: 45px;
+  transition: 0.3s background ease;
+}
+
+.dialog-item:hover {
+  background: rgba(196, 196, 196, 0.15);
 }
 
 .dialog-item.current {
