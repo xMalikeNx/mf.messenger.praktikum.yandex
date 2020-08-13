@@ -9,23 +9,26 @@
   <body>
     <div class="app">
       <div class="left-panel">
-        <ul class="left-panel__list">
-          <li class="left-panel__list__item">
+        <ul class="left-panel-navs">
+          <li class="left-panel-navs__item">
             <i class="fa fa-bars"></i>
           </li>
+          <li class="left-panel-navs__item current">
+            <img src="/img/icons/comment.svg" alt="comment" />
+          </li>
         </ul>
-        <div class="left-panel__menu">
-          <div class="left-panel__menu__logo">
+        <div class="left-panel-menu">
+          <div class="left-panel-menu__logo">
             MNMessager
           </div>
-          <ul class="left-panel__menu__nav-list">
-            <li class="left-panel__menu__nav-list__item">
+          <ul class="left-panel-menu-list">
+            <li class="left-panel-menu-list__item">
               <a href="#">Профиль</a>
             </li>
-            <li class="left-panel__menu__nav-list__item current">
+            <li class="left-panel-menu-list__item current">
               <a href="#">Еще какой-то пункт</a>
             </li>
-            <li class="left-panel__menu__nav-list__item">
+            <li class="left-panel-menu-list__item">
               <a href="#">И еще один пункт</a>
             </li>
           </ul>
@@ -35,284 +38,309 @@
         <div class="search-input">
           <input class="search-input__field" type="text" placeholder="Поиск" />
         </div>
-        <ul class=".dialogs-panel dialogs__list">
+        <ul class="dialogs__list">
           <div class="dialog-item current">
-            <div class="dialog-item__avatar" style="background: #b98eff;">
+            <div class="avatar" style="background: #b98eff;">
               М
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Мур
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Ууууууууууууу какой :3
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 12:00
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 1
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #3ed2dc;">
+            <div class="avatar" style="background: #3ed2dc;">
               КП
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Кот Пушок
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 <strong>Я:</strong> я сейчас очень занят,<br />давай потом
                 обсудим э...
               </div>
             </div>
-            <div class="dialog-item__status">
-              <span class="dialog-item__status__check">
+            <div class="dialog-item__status-block">
+              <span class="dialog-item__check">
                 <img src="/img/icons/check.svg" alt="check" />
               </span>
-              <time class="dialog-item__status__time">
+              <time class="dialog-item__time">
                 ср
               </time>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #6fafeb;">
+            <div class="avatar" style="background: #6fafeb;">
               Д
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Деканат
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Ты когда собираешься сдавать свои хвосты?
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 14:11
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 22
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #a9e27c;">
+            <div class="avatar" style="background: #a9e27c;">
               ЕР
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Евгений Радченко
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Норм катка, давай по новой)))
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 14:11
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 1
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #efbd5b;">
+            <div class="avatar" style="background: #efbd5b;">
               Д
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Даха
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Вечером на природу)
               </div>
             </div>
-            <div class="dialog-item__status">
-              <span class="dialog-item__status__check">
+            <div class="dialog-item__status-block">
+              <span class="dialog-item__check">
                 <img src="/img/icons/check.svg" alt="check" />
               </span>
-              <time class="dialog-item__status__time">
+              <time class="dialog-item__time">
                 12:32
               </time>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #eb6f9b;">
+            <div class="avatar" style="background: #eb6f9b;">
               ДС
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Джон Сноу
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Дедлайн близко...
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 11:04
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 8
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #7dd3c4;">
+            <div class="avatar" style="background: #7dd3c4;">
               ТБ
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Таксенок Буч
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Я знаю, что вы там говорите о котиках ((
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 14:23
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 1
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #eb6fc1;">
+            <div class="avatar" style="background: #eb6fc1;">
               P
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Pudge
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 <strong>Я:</strong> да ладно тебе расстраиваться...
               </div>
             </div>
-            <div class="dialog-item__status">
-              <span class="dialog-item__status__check">
+            <div class="dialog-item__status-block">
+              <span class="dialog-item__check">
                 <img src="/img/icons/check.svg" alt="check" />
               </span>
-              <time class="dialog-item__status__time">
+              <time class="dialog-item__time">
                 11:55
               </time>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #716feb;">
+            <div class="avatar" style="background: #716feb;">
               DR
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Drow Ranger
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 <strong>Я:</strong> отстань от меня, синяя
               </div>
             </div>
-            <div class="dialog-item__status">
-              <span class="dialog-item__status__check">
+            <div class="dialog-item__status-block">
+              <span class="dialog-item__check">
                 <img src="/img/icons/check.svg" alt="check" />
               </span>
-              <time class="dialog-item__status__time">
+              <time class="dialog-item__time">
                 вс
               </time>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #716feb;">
+            <div class="avatar" style="background: #716feb;">
               DR
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Drow Ranger
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 <strong>Я:</strong> отстань от меня, синяя
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 18:41
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 2
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #8492d7;">
+            <div class="avatar" style="background: #8492d7;">
               W
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 Windranger
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Я устала сидеть в таверне, заходи в доту...
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 17:43
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 1
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #52d27d;">
+            <div class="avatar" style="background: #52d27d;">
               H
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 HON
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Как ты смеешь играть в доту, когда есть я? -_-
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 14:11
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 14
               </div>
             </div>
           </div>
           <div class="dialog-item">
-            <div class="dialog-item__avatar" style="background: #8bbe63;">
+            <div class="avatar" style="background: #8bbe63;">
               L
             </div>
             <div class="dialog-item__info">
-              <div class="dialog-item__info__username">
+              <div class="dialog-item__username">
                 LOL
               </div>
-              <div class="dialog-item__info__message">
+              <div class="dialog-item__message">
                 Посторонитесь, господа. Этот человек мой ))
               </div>
             </div>
-            <div class="dialog-item__status">
-              <time class="dialog-item__status__time">
+            <div class="dialog-item__status-block">
+              <time class="dialog-item__time">
                 9:32
               </time>
-              <div class="dialog-item__status__indicator">
+              <div class="dialog-item__indicator">
                 1
               </div>
             </div>
           </div>
         </ul>
       </div>
-      <div class="chat-panel"></div>
+      <div class="chat-panel">
+        <div class="top-bar">
+          <div class="top-bar-info">
+            <div class="avatar">
+              М
+            </div>
+            <div class="top-bar-info__data">
+              <div class="top-bar-info__username">
+                Мур
+              </div>
+              <div class="top-bar-info__lastvisit">
+                был в сети 20 минут назад
+              </div>
+            </div>
+          </div>
+          <div class="settings-wrap">
+            <div class="dots-icon">
+              <img
+                class="dots-icon__img"
+                src="/img/icons/dots.svg"
+                alt="dots"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
