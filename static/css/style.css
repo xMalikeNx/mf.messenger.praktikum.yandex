@@ -782,6 +782,32 @@
     text-transform: uppercase;
 }
 
+.username-edit-field {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.username-edit-field__button .button {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    flex-shrink: 0;
+    margin-left: 15px;
+    border-radius: 50%;
+}
+
+.username-edit-field__input {
+    width: 100%;
+    max-width: 320px;
+    padding: 10px 15px;
+    border: none;
+    border-bottom: 1px solid #D1D8EF;
+    outline: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 991px) {
     .chat-panel, .content-view {
         width: calc(100% - 60px);
