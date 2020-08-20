@@ -45,6 +45,7 @@
     justify-content: center;
     color: #dadada;
     cursor: pointer;
+    text-decoration: none;
     transition: 0.3s background ease;
 }
 
@@ -94,14 +95,12 @@
     font-size: 18px;
     text-decoration: none;
     transition: 0.3s background ease;
-}
-
-.left-panel-menu-list__item a {
     text-decoration: none;
     color: #dfdfdf;
     padding: 12px 15px;
     display: block;
 }
+
 
 .left-panel-menu-list__item.current {
     background: #464646;

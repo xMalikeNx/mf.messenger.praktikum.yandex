@@ -8,33 +8,33 @@
   </head>
   <body>
     <div class="app">
-      <div class="left-panel">
-        <ul class="left-panel-navs">
-          <li class="left-panel-navs__item">
+      <aside class="left-panel">
+        <nav class="left-panel-navs">
+          <a href="#" class="left-panel-navs__item">
             <i class="fa fa-bars"></i>
-          </li>
-          <li class="left-panel-navs__item current">
+          </a>
+          <a href="#" class="left-panel-navs__item current">
             <img src="/img/icons/comment.svg" alt="comment" />
-          </li>
-        </ul>
+          </a>
+        </nav>
         <div class="left-panel-menu">
           <div class="left-panel-menu__logo">
             MNMessager
           </div>
-          <ul class="left-panel-menu-list">
-            <li class="left-panel-menu-list__item">
-              <a href="#">Профиль</a>
-            </li>
-            <li class="left-panel-menu-list__item current">
-              <a href="#">Еще какой-то пункт</a>
-            </li>
-            <li class="left-panel-menu-list__item">
-              <a href="#">И еще один пункт</a>
-            </li>
-          </ul>
+          <nav class="left-panel-menu-list">
+            <a href="#" class="left-panel-menu-list__item">
+              Профиль
+            </a>
+            <a href="#" class="left-panel-menu-list__item current">
+              Еще какой-то пункт
+            </a>
+            <a href="#" class="left-panel-menu-list__item">
+              И еще один пункт
+            </a>
+          </nav>
         </div>
-      </div>
-      <div class="dialogs-panel">
+      </aside>
+      <aside class="dialogs-panel">
         <div class="search-input-wrapper">
           <button class="bars-button">
             <i class="bars-button__icon fa fa-bars"></i>
@@ -47,7 +47,7 @@
             />
           </div>
         </div>
-        <ul class="dialogs__list">
+        <div class="dialogs__list">
           <div class="dialog-item current">
             <div class="avatar" style="background: #b98eff;">
               М
@@ -322,9 +322,9 @@
               </div>
             </div>
           </div>
-        </ul>
-      </div>
-      <div class="chat-panel">
+        </div>
+      </aside>
+      <main class="chat-panel">
         <div class="top-bar">
           <button class="back-button">
             <img
@@ -341,9 +341,9 @@
               <div class="top-bar-info__username">
                 Мур
               </div>
-              <div class="top-bar-info__lastvisit">
+              <time class="top-bar-info__lastvisit">
                 был в сети 20 минут назад
-              </div>
+              </time>
             </div>
           </div>
           <div class="settings-wrap">
@@ -357,27 +357,29 @@
           </div>
         </div>
         <div class="chat">
-          <div class="message-time">
+          <time class="message-time">
             29 августа
-          </div>
+          </time>
           <div class="message">
             <div class="message__content">
-              <p>
-                Первые строки стихотворения «Я помню чудное мгновенье» известны
-                практически каждому. Это одно из самых известных лирических
-                произведений Пушкина. Поэт был очень влюбчивым человеком, и
-                многие свои стихи посвящал женщинам. В 1819 г. он познакомился с
-                А. П. Керн, которая на долгое время захватила его воображение. В
-                1825 г., во время ссылки поэта в Михайловском, состоялась вторая
-                встреча поэта с Керн. Под влиянием этой неожиданной встречи
-                Пушкин и написал стихотворение «Я помню чудное мгновенье».
-              </p>
-              <p>
-                Короткое произведение является образцом поэтического признания в
-                любви. Всего в нескольких строфах Пушкин разворачивает перед
-                читателем долгую историю взаимоотношений с Керн. Выражение
-                «гений чистой красоты» очень емко.
-              </p>
+              <article>
+                <p>
+                  Первые строки стихотворения «Я помню чудное мгновенье» известны
+                  практически каждому. Это одно из самых известных лирических
+                  произведений Пушкина. Поэт был очень влюбчивым человеком, и
+                  многие свои стихи посвящал женщинам. В 1819 г. он познакомился с
+                  А. П. Керн, которая на долгое время захватила его воображение. В
+                  1825 г., во время ссылки поэта в Михайловском, состоялась вторая
+                  встреча поэта с Керн. Под влиянием этой неожиданной встречи
+                  Пушкин и написал стихотворение «Я помню чудное мгновенье».
+                </p>
+                <p>
+                  Короткое произведение является образцом поэтического признания в
+                  любви. Всего в нескольких строфах Пушкин разворачивает перед
+                  читателем долгую историю взаимоотношений с Керн. Выражение
+                  «гений чистой красоты» очень емко.
+                </p>
+              </article>
             </div>
             <div class="message__status">
               <time class="message__time">
@@ -387,27 +389,29 @@
           </div>
           <div class="message message--me">
             <div class="message__content">
-              <p>
-                Первые строки стихотворения «Я помню чудное мгновенье» известны
-                практически каждому. Это одно из самых известных лирических
-                произведений Пушкина. Поэт был очень влюбчивым человеком, и
-                многие свои стихи посвящал женщинам. В 1819 г. он познакомился с
-                А. П. Керн, которая на долгое время захватила его воображение. В
-                1825 г., во время ссылки поэта в Михайловском, состоялась вторая
-                встреча поэта с Керн. Под влиянием этой неожиданной встречи
-                Пушкин и написал стихотворение «Я помню чудное мгновенье».
-              </p>
-              <p>
-                Короткое произведение является образцом поэтического признания в
-                любви. Всего в нескольких строфах Пушкин разворачивает перед
-                читателем долгую историю взаимоотношений с Керн. Выражение
-                «гений чистой красоты» очень емко.
-              </p>
+              <article>
+                <p>
+                  Первые строки стихотворения «Я помню чудное мгновенье» известны
+                  практически каждому. Это одно из самых известных лирических
+                  произведений Пушкина. Поэт был очень влюбчивым человеком, и
+                  многие свои стихи посвящал женщинам. В 1819 г. он познакомился с
+                  А. П. Керн, которая на долгое время захватила его воображение. В
+                  1825 г., во время ссылки поэта в Михайловском, состоялась вторая
+                  встреча поэта с Керн. Под влиянием этой неожиданной встречи
+                  Пушкин и написал стихотворение «Я помню чудное мгновенье».
+                </p>
+                <p>
+                  Короткое произведение является образцом поэтического признания в
+                  любви. Всего в нескольких строфах Пушкин разворачивает перед
+                  читателем долгую историю взаимоотношений с Керн. Выражение
+                  «гений чистой красоты» очень емко.
+                </p>
+              </article>
             </div>
             <div class="message__status">
-              <div class="message__time">
+              <time class="message__time">
                 14:32
-              </div>
+              </time>
               <div class="message__indicator">
                 <img src="/img/icons/check.svg" alt="check" />
               </div>
@@ -418,9 +422,9 @@
               <img class="message__attach" src="/img/kitten.png" alt="kitten" />
             </div>
             <div class="message__status">
-              <div class="message__time">
+              <time class="message__time">
                 14:32
-              </div>
+              </time>
               <div class="message__indicator">
                 <img src="/img/icons/check.svg" alt="check" />
               </div>
@@ -428,14 +432,16 @@
           </div>
           <div class="message message--me">
             <div class="message__content">
-              <p>
-                Уууууууу :3
-              </p>
+              <article>
+                <p>
+                  Уууууууу :3
+                </p>
+              </article>
             </div>
             <div class="message__status">
-              <div class="message__time">
+              <time class="message__time">
                 14:32
-              </div>
+              </time>
               <div class="message__indicator">
                 <img src="/img/icons/check.svg" alt="check" />
               </div>
@@ -446,9 +452,9 @@
               <img class="message__attach" src="/img/kitten.png" alt="kitten" />
             </div>
             <div class="message__status">
-              <div class="message__time">
+              <time class="message__time">
                 14:32
-              </div>
+              </time>
             </div>
           </div>
           <div class="message">
@@ -456,9 +462,9 @@
               <p>Уууууу :3</p>
             </div>
             <div class="message__status">
-              <div class="message__time">
+              <time class="message__time">
                 14:32
-              </div>
+              </time>
             </div>
           </div>
         </div>
@@ -477,7 +483,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   </body>
 </html>
