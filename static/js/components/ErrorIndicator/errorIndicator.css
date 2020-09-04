@@ -1,0 +1,18 @@
+.error-panel {
+  position: absolute;
+  width: 100%;
+  padding-left: 100px;
+  font-weight: bold;
+  top: 45vh;
+  transform: translateY(-50%);
+  color: #0d0c45;
+}
+
+.error-panel__code {
+  font-size: 160px;
+}
+
+.error-panel__message {
+  font-size: 56px;
+  text-transform: uppercase;
+}

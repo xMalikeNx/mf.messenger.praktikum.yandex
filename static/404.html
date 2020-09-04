@@ -1,17 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/css/style.css" />
-  <title>MNMessager</title>
-</head>
-<body>
-<div class="app gradient-page">
-    <div class="error-panel">
-      <div class="error-panel__code">404</div>
-      <div class="error-panel__message">Страница не найдена</div>
-    </div>
-</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/media.css" />
+    <link rel="stylesheet" href="./js/components/App/app.css" />
+    <link rel="stylesheet" href="./js/components/LeftPanel/leftPanel.css" />
+    <link
+      rel="stylesheet"
+      href="./js/components/DialogsPanel/dialogsPanel.css"
+    />
+    <link rel="stylesheet" href="./js/components/DialogItem/dialogItem.css" />
+    <link rel="stylesheet" href="./js/components/ChatPanel/chatPanel.css" />
+    <link rel="stylesheet" href="./js/components/Profile/profile.css" />
+    <link rel="stylesheet" href="./js/components/TopBar/topBar.css" />
+    <link rel="stylesheet" href="./js/components/Avatar/avatar.css" />
+    <link rel="stylesheet" href="./js/components/MessageBar/messageBar.css" />
+    <link rel="stylesheet" href="./js/components/InputField/inputField.css" />
+    <link rel="stylesheet" href="./js/components/Button/button.css" />
+    <link
+      rel="stylesheet"
+      href="./js/components/ErrorIndicator/errorIndicator.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./js/components/LoadingIndicator/loadingIndicator.css"
+    />
+    <title>Error</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="module" src="./js/Templator.js"></script>
+    <script type="module" src="./js/services/apiService.js"></script>
+    <script type="module" src="./js/components/App/App.js"></script>
+    <script type="module" src="./js/components/Button/Button.js"></script>
+    <script
+      type="module"
+      src="./js/components/InputField/InputField.js"
+    ></script>
+    <script type="module" src="./js/components/LeftPanel/LeftPanel.js"></script>
+    <script
+      type="module"
+      src="./js/components/LeftPanelMenu/LeftPanelMenu.js"
+    ></script>
+    <script
+      type="module"
+      src="./js/components/DialogsPanel/DialogsPanel.js"
+    ></script>
+    <script
+      type="module"
+      src="./js/components/DialogItem/DialogItem.js"
+    ></script>
+    <script type="module" src="./js/components/Chat/Chat.js"></script>
+    <script type="module" src="./js/components/ChatPanel/ChatPanel.js"></script>
+    <script
+      type="module"
+      src="./js/components/MessageItem/MessageItem.js"
+    ></script>
+    <script type="module" src="./js/components/TopBar/TopBar.js"></script>
+    <script
+      type="module"
+      src="./js/components/MessageBar/MessageBar.js"
+    ></script>
+    <script type="module" src="./js/components/Avatar/Avatar.js"></script>
+    <script
+      type="module"
+      src="./js/components/LoadingIndicator/LoadingIndicator.js"
+    ></script>
+    <script type="module" src="./js/components/Profile/Profile.js"></script>
+    <script type="module" src="./js/components/Content/Content.js"></script>
+    <script
+      type="module"
+      src="./js/components/ErrorIndicator/ErrorIndicator.js"
+    ></script>
+    <script type="module" src="./js/utils/getFirstChars.js"></script>
+    <script type="module" src="./js/utils/deepProperty.js"></script>
+    <script type="module" src="./js/utils/ucFirst.js"></script>
+    <script type="module" src="./js/utils/validateField.js"></script>
+    <script type="module">
+      import { ApiService } from "./js/services/apiService.js";
+      window.api = new ApiService();
+
+      const root = document.querySelector("#root");
+      if (window.tpls) {
+        root.appendChild(
+          window.tpls.compile("ErrorIndicator", {
+            code: 404,
+            title: "Не удалось найти страницу",
+          })
+        );
+      }
+    </script>
+  </body>
 </html>

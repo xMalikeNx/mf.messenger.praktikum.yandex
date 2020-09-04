@@ -1,0 +1,155 @@
+.message-bar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #d1d8ef;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 44px);
+}
+
+.message-bar__attach {
+  cursor: pointer;
+  margin-right: 25px;
+  position: relative;
+}
+
+.message-bar__input-wrap {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.message-bar__input {
+  width: 100%;
+  height: 45px;
+  padding-left: 30px;
+  padding-right: 75px;
+  border-radius: 100px;
+  border: none;
+  background: #f2f2f2;
+  outline: none;
+  font-size: 16px;
+}
+
+.message-bar__send {
+  width: 65px;
+  height: 45px;
+  border-radius: 100px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  transition: 0.3s background ease;
+}
+
+.message-bar__send:hover {
+  background: #e3e3e3;
+}
+
+.message-time {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #7a7a7a;
+}
+
+.message {
+  max-width: 600px;
+  display: block;
+  border-radius: 15px;
+  border-top-left-radius: 0;
+  background: #f5effa;
+  position: relative;
+  margin-bottom: 15px;
+  margin-right: auto;
+}
+
+.message__content {
+  padding: 15px;
+  padding-bottom: 30px;
+}
+
+.message.message--me {
+  background: #e8f0f9;
+  margin-left: auto;
+  margin-right: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 0;
+}
+
+.message.message--me .message__content {
+  padding-right: 65px;
+  padding-bottom: 15px;
+}
+
+.message__status {
+  position: absolute;
+  right: 15px;
+  bottom: 10px;
+  text-align: right;
+}
+
+.message.message--me .message__status {
+  top: 10px;
+}
+
+.message.message--me .message__indicator {
+  line-height: 1.2;
+}
+
+.message__content p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.message__time {
+  font-size: 12px;
+  color: #4e4e4e;
+}
+
+.message.message--img {
+  display: block;
+  padding: 0;
+  border: 1px solid #58adfb;
+}
+
+.message.message--img .message__status {
+  background: rgba(255, 255, 255, 0.8);
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 4px;
+  text-align: right;
+}
+
+.message.message--img .message__indicator,
+.message.message--img.message--me .message__indicator {
+  line-height: 0;
+}
+
+.message.message--img .message__attach {
+  border-radius: 15px;
+  border-top-left-radius: 0;
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.message.message--me.message--img .message__attach {
+  border-top-left-radius: 0;
+  border-top-right-radius: 15px;
+}
+
+.message.message--img .message__status {
+  bottom: 10px;
+  top: auto;
+}
+
+.message-bar__attach .dropdown {
+  bottom: calc(100% + 10px);
+}
