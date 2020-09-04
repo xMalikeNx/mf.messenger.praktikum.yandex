@@ -259,7 +259,6 @@ class TagTreeGenerator {
         return;
       }
       if (this.actionEvents[attribute] && typeof ctxValue === 'function') {
-        console.log(attribute);
         element.addEventListener(this.actionEvents[attribute], (e) =>
           ctxValue(e)
         );

@@ -13,7 +13,6 @@ export function InputField({
     type,
     options,
     onInputChange: function (e) {
-      console.log(e);
       if (typeof onChange === 'function') {
         onChange(e);
       }
@@ -24,8 +23,6 @@ export function InputField({
     className,
   };
   this.render = function () {
-    console.log(this.ctx);
-    console.log(this.props);
     return `
       {% if className %}
         <div class="input-field {{className}}">

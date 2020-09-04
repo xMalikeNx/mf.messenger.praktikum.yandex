@@ -22,7 +22,6 @@ export function RegistrationPage() {
       this.ctx.formState[name] = value;
     },
     onSubmit: (e) => {
-      console.log('on submit');
       e.preventDefault();
       if (
         Object.values(this.ctx.formState).some((value) => !validateField(value))

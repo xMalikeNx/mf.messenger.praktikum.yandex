@@ -4,7 +4,6 @@ export function LeftPanelMenu({ appName, options, menuOpened, selectedOption }) 
   };
 
   this.render = function () {
-    console.log(options);
     return `
         {% if menuOpened %}
           <div class="left-panel-menu opened">
