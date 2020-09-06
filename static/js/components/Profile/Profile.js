@@ -1,4 +1,4 @@
-import { validateField } from '../../utils/validateField.js';
+import { isValid } from '../../utils/isValid.js';
 
 export function Profile() {
   this.ctx = {
@@ -22,7 +22,7 @@ export function Profile() {
         this.ctx.borderColor = borderColor;
       }
 
-      if (!validateField(value)) {
+      if (!isValid(value, true)) {
         e.target.style.borderColor = 'red';
       } else {
         e.target.style.borderColor = this.ctx.borderColor;
@@ -34,7 +34,7 @@ export function Profile() {
       e.preventDefault();
 
       const inputs = e.target.querySelectorAll('input');
-      if (Array.from(inputs).some((input) => !validateField(input.value))) {
+      if (Array.from(inputs).some((input) => !isValid(input.value))) {
         alert('Убедитсь в правильности введенных данных!');
       } else {
         console.log(this.ctx.formState);
@@ -58,6 +58,7 @@ export function Profile() {
           <form id="profile-form" onSubmit={{onSubmit}}>
             <InputField
                 name="login"
+                required="required"
                 value={{formState.login}}
                 placeholder="Логин"
                 label="Логин"
@@ -65,6 +66,7 @@ export function Profile() {
               />  
             <InputField
               name="email"
+              required="required"
               value={{formState.email}}
               placeholder="Email"
               label="Email"

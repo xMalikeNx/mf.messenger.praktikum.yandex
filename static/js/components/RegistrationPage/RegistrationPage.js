@@ -1,4 +1,4 @@
-import { validateField } from '../../utils/validateField.js';
+import { isValid } from '../../utils/isValid.js';
 
 export function RegistrationPage() {
   this.ctx = {
@@ -14,7 +14,7 @@ export function RegistrationPage() {
         this.ctx.borderColor = borderColor;
       }
 
-      if (!validateField(value)) {
+      if (!isValid(value)) {
         e.target.style.borderColor = 'red';
       } else {
         e.target.style.borderColor = this.ctx.borderColor;
@@ -23,9 +23,7 @@ export function RegistrationPage() {
     },
     onSubmit: (e) => {
       e.preventDefault();
-      if (
-        Object.values(this.ctx.formState).some((value) => !validateField(value))
-      ) {
+      if (Object.values(this.ctx.formState).some((value) => !isValid(value))) {
         alert('Убедитесь в правильности введенной информации');
       } else {
         console.log(this.ctx.formState);

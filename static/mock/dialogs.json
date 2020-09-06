@@ -1,0 +1,21 @@
+{
+  "dialogs": [
+    {
+      "id": 1,
+      "isMy": false,
+      "lastMessage": "Привет, как дела?",
+      "background": "#3ed2dc",
+      "time": "ср",
+      "userName": "Жека",
+      "unreadCount": 1
+    },
+    {
+      "id": 2,
+      "isMy": true,
+      "lastMessage": "Я кодю, потом катнем",
+      "background": "#8492d7",
+      "time": "12:43",
+      "userName": "Аркадий"
+    }
+  ]
+}

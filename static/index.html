@@ -31,7 +31,11 @@
   <body>
     <div id="root"></div>
 
-    <script type="module" src="./js/Templator.js"></script>
+    <script type="module" src="./js/lib/templator/htmlTags.js"></script>
+    <script type="module" src="./js/lib/templator/regexMap.js"></script>
+    <script type="module" src="./js/lib/templator/TagTreeGenerator.js"></script>
+    <script type="module" src="./js/lib/templator/TemplateAnalyzer.js"></script>
+    <script type="module" src="./js/lib/templator/Templator.js"></script>
     <script type="module" src="./js/services/apiService.js"></script>
     <script type="module" src="./js/components/App/App.js"></script>
     <script type="module" src="./js/components/Button/Button.js"></script>
@@ -71,16 +75,14 @@
     <script type="module" src="./js/components/Profile/Profile.js"></script>
     <script type="module" src="./js/components/Content/Content.js"></script>
     <script type="module" src="./js/utils/getFirstChars.js"></script>
-    <script type="module" src="./js/utils/deepProperty.js"></script>
-    <script type="module" src="./js/utils/ucFirst.js"></script>
-    <script type="module" src="./js/utils/validateField.js"></script>
+    <script type="module" src="./js/utils/isValid.js"></script>
     <script type="module">
-      import { ApiService } from "./js/services/apiService.js";
+      import { ApiService } from './js/services/apiService.js';
       window.api = new ApiService();
 
-      const root = document.querySelector("#root");
+      const root = document.querySelector('#root');
       if (window.tpls) {
-        root.appendChild(window.tpls.compile("App"));
+        root.appendChild(window.tpls.compile('App'));
       }
     </script>
   </body>
