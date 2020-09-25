@@ -1,1 +1,5 @@
-/*   /static/index.html   200
+[[redirects]]
+from = "/*"
+to = "/books"
+status = 200
+force = false
