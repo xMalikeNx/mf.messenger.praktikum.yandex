@@ -1,0 +1,62 @@
+.dialog-item {
+  padding: 9px;
+  border-radius: 10px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  padding-right: 45px;
+  transition: 0.3s background ease;
+  outline: none;
+  &:hover {
+    background: rgba(196, 196, 196, 0.15);
+  }
+  &.current {
+    background: rgba(196, 196, 196, 0.35);
+  }
+  .avatar {
+    flex-shrink: 0;
+  }
+  &__info {
+    margin-left: 15px;
+    padding-top: 3px;
+  }
+  &__username {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  &__message {
+    color: #464646;
+    font-size: 14px;
+  }
+  &__status-block {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    text-align: right;
+  }
+  &__check {
+    margin-right: 5px;
+    position: relative;
+    top: -1px;
+  }
+  &__time {
+    font-size: 13px;
+    color: #464646;
+  }
+  &__indicator {
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #58adfb;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    color: #fff;
+    font-weight: bold;
+  }
+}

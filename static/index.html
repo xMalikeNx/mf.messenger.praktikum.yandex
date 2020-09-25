@@ -3,87 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/media.css" />
-    <link rel="stylesheet" href="./js/components/App/app.css" />
-    <link rel="stylesheet" href="./js/components/LeftPanel/leftPanel.css" />
-    <link
-      rel="stylesheet"
-      href="./js/components/DialogsPanel/dialogsPanel.css"
-    />
-    <link rel="stylesheet" href="./js/components/DialogItem/dialogItem.css" />
-    <link rel="stylesheet" href="./js/components/ChatPanel/chatPanel.css" />
-    <link rel="stylesheet" href="./js/components/Profile/profile.css" />
-    <link rel="stylesheet" href="./js/components/TopBar/topBar.css" />
-    <link rel="stylesheet" href="./js/components/Avatar/avatar.css" />
-    <link rel="stylesheet" href="./js/components/MessageBar/messageBar.css" />
-    <link rel="stylesheet" href="./js/components/InputField/inputField.css" />
-    <link rel="stylesheet" href="./js/components/Button/button.css" />
-    <link
-      rel="stylesheet"
-      href="./js/components/ErrorIndicator/errorIndicator.css"
-    />
-    <link
-      rel="stylesheet"
-      href="./js/components/LoadingIndicator/loadingIndicator.css"
-    />
-    <title>MNMessager</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
     <div id="root"></div>
 
-    <script type="module" src="./js/lib/templator/htmlTags.js"></script>
-    <script type="module" src="./js/lib/templator/regexMap.js"></script>
-    <script type="module" src="./js/lib/templator/TagTreeGenerator.js"></script>
-    <script type="module" src="./js/lib/templator/TemplateAnalyzer.js"></script>
-    <script type="module" src="./js/lib/templator/Templator.js"></script>
-    <script type="module" src="./js/services/apiService.js"></script>
-    <script type="module" src="./js/components/App/App.js"></script>
-    <script type="module" src="./js/components/Button/Button.js"></script>
-    <script
-      type="module"
-      src="./js/components/InputField/InputField.js"
-    ></script>
-    <script type="module" src="./js/components/LeftPanel/LeftPanel.js"></script>
-    <script
-      type="module"
-      src="./js/components/LeftPanelMenu/LeftPanelMenu.js"
-    ></script>
-    <script
-      type="module"
-      src="./js/components/DialogsPanel/DialogsPanel.js"
-    ></script>
-    <script
-      type="module"
-      src="./js/components/DialogItem/DialogItem.js"
-    ></script>
-    <script type="module" src="./js/components/Chat/Chat.js"></script>
-    <script type="module" src="./js/components/ChatPanel/ChatPanel.js"></script>
-    <script
-      type="module"
-      src="./js/components/MessageItem/MessageItem.js"
-    ></script>
-    <script type="module" src="./js/components/TopBar/TopBar.js"></script>
-    <script
-      type="module"
-      src="./js/components/MessageBar/MessageBar.js"
-    ></script>
-    <script type="module" src="./js/components/Avatar/Avatar.js"></script>
-    <script
-      type="module"
-      src="./js/components/LoadingIndicator/LoadingIndicator.js"
-    ></script>
-    <script type="module" src="./js/components/Profile/Profile.js"></script>
-    <script type="module" src="./js/components/Content/Content.js"></script>
-    <script type="module" src="./js/utils/getFirstChars.js"></script>
-    <script type="module" src="./js/utils/isValid.js"></script>
     <script type="module">
-      import { ApiService } from './js/services/apiService.js';
-      window.api = new ApiService();
-
+      import { MNTemplator } from './js/core/templator/Templator.js';
+      import * as Components from './js/components/index.js';
+      import * as Pages from './js/pages/index.js';
+      
       const root = document.querySelector('#root');
-      if (window.tpls) {
-        root.appendChild(window.tpls.compile('App'));
-      }
+      root.appendChild(window.templator.compile(Components.App));
     </script>
   </body>
 </html>
