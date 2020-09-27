@@ -1,1 +1,1 @@
-export { InputField } from './InputField.js';
+export { InputField } from './InputField';

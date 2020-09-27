@@ -1,6 +1,5 @@
-import { Store } from '../core/Store.js';
-import { Api } from '../utils/Api.js';
-import { validate } from '../utils/validate.js';
+import { Store } from '../core/Store';
+import { validate } from '../utils/validate';
 
 export type ProfileState = {
   login: string;

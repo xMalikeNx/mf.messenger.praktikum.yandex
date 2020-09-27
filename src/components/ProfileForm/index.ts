@@ -1,1 +1,1 @@
-export { ProfileForm } from './ProfileForm.js';
+export { ProfileForm } from './ProfileForm';

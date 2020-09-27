@@ -1,8 +1,8 @@
-import { Component } from '../Component.js';
+import { Component } from '../Component';
 import { StateType } from '../types';
-import { ComponentsRegistry } from './ComponentsRegistry.js';
-import { Branch, TagTreeGenerator } from './TagTreeGenerator.js';
-import { TemplateAnalyzer } from './TemplateAnalyzer.js';
+import { ComponentsRegistry } from './ComponentsRegistry';
+import { TagTreeGenerator } from './TagTreeGenerator';
+import { TemplateAnalyzer } from './TemplateAnalyzer';
 
 export class MNTemplator {
   public registry: ComponentsRegistry = new ComponentsRegistry();
@@ -41,8 +41,4 @@ export class MNTemplator {
     const item = tagGenerator.generate();
     return item;
   }
-}
-
-if (typeof window !== 'undefined') {
-  (window as any).templator = new MNTemplator();
 }

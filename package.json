@@ -5,9 +5,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "nodemon --exec \"npm run build:static && npm run start\" --ignore dist -e ts,js",
     "dev:front": "tsc -w",
     "test": "jest",
+    "build:sass": "node-sass --output-style=\"compressed\" --source-map=\"dist/css/index.css.map\" src -o=\"dist/css\"",
+    "build:static": "ncp static dist",
+    "build": "node ./scripts/removeDist.js && tsc && npm run build:static && npm run build:sass",
     "sass": "node-sass --watch=\"src/\" --output-style=\"expanded\" --source-map=\"static/css/main.css.map\" --source-map-embed --source-map-contents --recursive src/ -o static/css"
   },
   "repository": {
@@ -27,14 +30,16 @@
   "devDependencies": {
     "@babel/core": "7.11.6",
     "@babel/preset-env": "7.11.5",
-    "@types/jest": "26.0.14",
+    "@types/jest": "^26.0.14",
     "babel-jest": "26.3.0",
     "eslint": "7.6.0",
     "font-awesome": "4.7.0",
-    "jest": "26.4.2",
+    "jest": "^26.4.2",
+    "ncp": "^2.0.0",
     "node-sass": "4.14.1",
     "nodemon": "2.0.4",
     "prettier": "2.0.5",
-    "typescript": "4.0.3"
+    "ts-jest": "^26.4.0",
+    "typescript": "^4.0.3"
   }
 }

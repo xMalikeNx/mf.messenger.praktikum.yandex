@@ -1,5 +1,5 @@
-import { Component } from '../../core/Component.js';
-import { StateType } from '../../core/types.js';
+import { Component } from '../../core/Component';
+import { StateType } from '../../core/types';
 
 export class Button extends Component {
   constructor(props: StateType) {
@@ -29,7 +29,7 @@ export class Button extends Component {
       <button class="btn {{props.className}}" onClick={{props.onClick}}>
           {{props.text}}
       </button>
-    `,
+      `,
     ];
   }
 }

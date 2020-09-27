@@ -1,7 +1,6 @@
-import { MNRequest } from '../core/Request/Request.js';
-import { parseJSON } from '../core/Request/utils.js';
-import { Store } from '../core/Store.js';
-import { Api } from '../utils/Api.js';
+import { parseJSON } from '../core/Request/utils';
+import { Store } from '../core/Store';
+import { Api } from '../utils/Api';
 
 export type DialogMessageType = {
   id: number | string;

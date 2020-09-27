@@ -1,6 +1,4 @@
-import { Store } from '../core/Store.js';
-import { Api } from '../utils/Api.js';
-import { validate } from '../utils/validate.js';
+import { Store } from '../core/Store';
 
 export type LoginState = {
   login: string;

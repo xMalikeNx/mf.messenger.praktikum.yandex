@@ -1,5 +1,5 @@
-import { Component } from '../Component.js';
-import { EventBus } from '../EventBus.js';
+import { Component } from '../Component';
+import { EventBus } from '../EventBus';
 
 export class Router {
   private static readonly ROUTER_EVENTS = {
@@ -19,13 +19,13 @@ export class Router {
   }
 
   private _start() {
-    window.onpopstate = ((event: PopStateEvent) => {
+    window.onpopstate = ((_event: PopStateEvent) => {
       this._onChangeRoute();
     }).bind(this);
   }
 
   public go(pathname: string) {
-    this.history.pushState({ user_id: 1 }, '', pathname);
+    this.history.pushState({}, '', pathname);
     this._onChangeRoute();
   }
 

@@ -1,13 +1,15 @@
-import { Component } from '../../core/Component.js';
-import { StateType } from '../../core/types.js';
+import { Component } from '../../core/Component';
+import { StateType } from '../../core/types';
 
 export class Login extends Component {
   render(): [string, StateType?] {
-    return [`
-        <div class="gradient-page">
-          <LoginForm />
-        </div>
-    `];
+    return [
+      `
+      <div class="gradient-page">
+        <LoginForm />
+      </div>
+      `,
+    ];
   }
 }
 

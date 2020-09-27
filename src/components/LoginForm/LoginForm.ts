@@ -1,6 +1,6 @@
-import { Component } from '../../core/Component.js';
+import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
-import { LoginStore } from '../../stores/login.store.js';
+import { LoginStore } from '../../stores/login.store';
 
 export class LoginForm extends Component {
   private loginStore: LoginStore;
@@ -14,7 +14,7 @@ export class LoginForm extends Component {
   render(): [string, StateType?] {
     return [
       `
-        <div class="form-wrap">
+      <div class="form-wrap">
         <div class="form">
           <h4 class="form__title">Авторизация</h4>
           <InputField
@@ -42,7 +42,7 @@ export class LoginForm extends Component {
           </div>
         </div>
       </div>
-        `,
+      `,
       {
         onSubmit: this.loginStore.onFormSubmit,
         onFieldChange: this.loginStore.onFieldChange,

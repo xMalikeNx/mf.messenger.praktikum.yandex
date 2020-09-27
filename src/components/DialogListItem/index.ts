@@ -1,1 +1,1 @@
-export { DialogListItem } from './DialogListItem.js';
+export { DialogListItem } from './DialogListItem';

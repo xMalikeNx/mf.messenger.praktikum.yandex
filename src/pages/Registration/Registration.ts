@@ -1,13 +1,15 @@
-import { Component } from '../../core/Component.js';
-import { StateType } from '../../core/types.js';
+import { Component } from '../../core/Component';
+import { StateType } from '../../core/types';
 
 export class Registration extends Component {
   render(): [string, StateType?] {
-    return [`
-    <div class="gradient-page">
-      <RegistrationForm />
-    </div>
-    `];
+    return [
+      `
+      <div class="gradient-page">
+        <RegistrationForm />
+      </div>
+      `,
+    ];
   }
 }
 

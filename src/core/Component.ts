@@ -1,6 +1,5 @@
-import { EventBus } from './EventBus.js';
-import { Branch } from './templator/TagTreeGenerator.js';
-import { StateType } from './types.js';
+import { EventBus } from './EventBus';
+import { StateType } from './types';
 
 export class Component {
   static readonly EVENTS = {
@@ -19,6 +18,8 @@ export class Component {
     this._eventBus = new EventBus();
     this._initEvents();
     this.props = props;
+    // Действия в конструкторе наследника не успевают выполниться перед тем как происходит cdm
+    // таким образом эта проблема якобы решается
     setTimeout(() => this.eventBus.emit(Component.EVENTS.INIT), 0);
   }
 
@@ -74,6 +75,7 @@ export class Component {
   }
 
   private _init() {
+    // Элемент успевает отрендериться, когда устанавливаются props и state
     this.eventBus.emit(Component.EVENTS.CDM);
   }
 
@@ -104,7 +106,7 @@ export class Component {
 
   componentDidMount() {}
 
-  componentDidUpdate(prevProps: StateType, prevState: StateType): boolean {
+  componentDidUpdate(_prevProps: StateType, _prevState: StateType): boolean {
     return true;
   }
 

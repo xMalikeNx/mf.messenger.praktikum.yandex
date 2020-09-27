@@ -1,0 +1,29 @@
+.error-panel {
+  position: absolute;
+  top: 45vh;
+  width: 100%;
+  padding-left: 100px;
+  font-weight: bold;
+  transform: translateY(-50%);
+  color: #0d0c45;
+}
+.error-panel__code {
+  font-size: 160px;
+}
+.error-panel__message {
+  font-size: 56px;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 991px) {
+  .error-panel {
+    padding-left: 30px;
+  }
+}
+@media screen and (max-width: 761px) {
+  .error-panel__code {
+    font-size: 100px;
+  }
+  .error-panel__message {
+    font-size: 36px;
+  }
+}

@@ -8,14 +8,6 @@
   </head>
   <body>
     <div id="root"></div>
-
-    <script type="module">
-      import { MNTemplator } from './js/core/templator/Templator.js';
-      import * as Components from './js/components/index.js';
-      import * as Pages from './js/pages/index.js';
-      
-      const root = document.querySelector('#root');
-      root.appendChild(window.templator.compile(Components.App));
-    </script>
+    <script src="/js/index.js" type="module"></script>
   </body>
 </html>

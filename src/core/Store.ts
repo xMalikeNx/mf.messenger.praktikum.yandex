@@ -1,6 +1,6 @@
-import { Component } from './Component.js';
-import { EventBus } from './EventBus.js';
-import { StateType } from './types.js';
+import { Component } from './Component';
+import { EventBus } from './EventBus';
+import { StateType } from './types';
 
 export class Store {
   static readonly EVENTS = {

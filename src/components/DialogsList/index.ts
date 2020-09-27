@@ -1,1 +1,1 @@
-export { DialogsList } from './DialogsList.js';
+export { DialogsList } from './DialogsList';

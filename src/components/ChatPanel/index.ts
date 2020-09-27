@@ -1,1 +1,1 @@
-export { ChatPanel } from './ChatPanel.js';
+export { ChatPanel } from './ChatPanel';

@@ -1,12 +1,13 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const fs = require('fs');
 
 const app = express();
 const PORT = 3000 || process.env.PORT;
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, './static')));
+app.use(express.static(path.join(__dirname, './dist')));
 app.use(express.json());
 
 app.get('/test', (req, res) => {
@@ -44,7 +45,10 @@ app.delete('/test/:id', (req, res) => {
 
 app.get('*', (req, res) => {
   if (!/(.js|.css|.ttf|.svg|.png|.jpg)$/.test(req.path)) {
-    console.log(req.path);
+    if (req.path.includes('/js')) {
+      return res.sendFile(path.join(__dirname, './dist' + req.path + '.js'));
+    }
+
     return res.sendFile(path.join(__dirname, './static/index.html'));
   }
 });

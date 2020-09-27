@@ -1,18 +1,16 @@
-import { Component } from '../../core/Component.js';
-import { StateType } from '../../core/types.js';
-import { ProfileStore } from '../../stores/profile.store.js';
+import { Component } from '../../core/Component';
+import { StateType } from '../../core/types';
 
 export class Profile extends Component {
-
   render(): [string, StateType?] {
     return [
       `
-            <div class="content-view">
-                <div class="content-view-wrapper">
-                    <ProfileForm />
-                </div>
-            </div>
-        `,
+      <div class="content-view">
+        <div class="content-view-wrapper">
+          <ProfileForm />
+        </div>
+      </div>
+      `,
     ];
   }
 }

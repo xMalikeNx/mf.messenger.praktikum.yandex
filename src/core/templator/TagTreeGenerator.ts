@@ -1,8 +1,8 @@
 import { Component } from '../Component';
-import { htmlTags } from './utils/htmlTags.js';
-import { regexMap } from './utils/regexMap.js';
+import { htmlTags } from './utils/htmlTags';
+import { regexMap } from './utils/regexMap';
 import { StateType } from '../types';
-import { getPropertyByPath } from '../../utils/getPropertyByPath.js';
+import { getPropertyByPath } from '../../utils/getPropertyByPath';
 import { MNTemplator } from './Templator';
 
 export type BranchAttributeType = { [name: string]: unknown };

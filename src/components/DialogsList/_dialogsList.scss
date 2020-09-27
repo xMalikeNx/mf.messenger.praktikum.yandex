@@ -1,0 +1,113 @@
+.dialogs-panel {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 60px;
+  width: 320px;
+  height: 100vh;
+  padding: 35px 10px;
+  background: linear-gradient(174.98deg, #e8f7ff, #f1dcff);
+}
+.dialogs__list {
+  height: 100%;
+  padding-bottom: 45px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.dialog-item {
+  position: relative;
+  display: flex;
+  padding: 9px 45px 9px 9px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s background ease;
+  &:hover {
+    background: rgba(196, 196, 196, 0.15);
+  }
+  .avatar {
+    flex-shrink: 0;
+  }
+}
+.dialog-item.current {
+  background: rgba(196, 196, 196, 0.35);
+}
+.dialog-item__info {
+  margin-left: 15px;
+  padding-top: 3px;
+}
+.dialog-item__username {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.dialog-item__message {
+  color: #464646;
+  font-size: 14px;
+}
+.dialog-item__status-block {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  text-align: right;
+}
+.dialog-item__check {
+  position: relative;
+  top: -1px;
+  margin-right: 5px;
+}
+.dialog-item__time {
+  color: #464646;
+  font-size: 13px;
+}
+.dialog-item__indicator {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  background: #58adfb;
+  border-radius: 50%;
+}
+
+.bars-button {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+}
+.bars-button__icon {
+  font-size: 20px;
+}
+@media screen and (max-width: 991px) {
+  .dialogs-panel {
+    display: none;
+  }
+}
+@media screen and (max-width: 761px) {
+  .dialogs-panel {
+    left: 0;
+    width: 100%;
+    top: 0;
+  }
+  .dialog-item__message {
+    font-size: 12px;
+  }
+
+  .bars-button {
+    display: block;
+  }
+}

@@ -1,1 +1,1 @@
-export { ErrorPage } from './ErrorPage.js';
+export { ErrorPage } from './ErrorPage';

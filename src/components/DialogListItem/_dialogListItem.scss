@@ -1,12 +1,10 @@
 .dialog-item {
-  padding: 9px;
-  border-radius: 10px;
-  display: flex;
   position: relative;
+  display: flex;
+  padding: 9px 45px 9px 9px;
+  border-radius: 10px;
   cursor: pointer;
-  padding-right: 45px;
   transition: 0.3s background ease;
-  outline: none;
   &:hover {
     background: rgba(196, 196, 196, 0.15);
   }
@@ -31,32 +29,32 @@
   }
   &__status-block {
     position: absolute;
-    right: 15px;
     top: 10px;
+    right: 15px;
     text-align: right;
   }
   &__check {
-    margin-right: 5px;
     position: relative;
     top: -1px;
+    margin-right: 5px;
   }
   &__time {
     font-size: 13px;
     color: #464646;
   }
   &__indicator {
-    font-size: 10px;
+    position: absolute;
+    top: 30px;
+    right: 0;
     width: 18px;
     height: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
     background: #58adfb;
     border-radius: 50%;
-    position: absolute;
-    top: 30px;
-    right: 0;
-    color: #fff;
-    font-weight: bold;
   }
 }

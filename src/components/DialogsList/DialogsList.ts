@@ -1,10 +1,10 @@
-import { Component } from '../../core/Component.js';
+import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 import {
   DialogItemType,
   DialogsListStore,
   DialogsState,
-} from '../../stores/dialogs.store.js';
+} from '../../stores/dialogs.store';
 
 export class DialogsList extends Component {
   dialogsStore: DialogsListStore;
@@ -39,40 +39,40 @@ export class DialogsList extends Component {
 
     return [
       `
-        <aside class="dialogs-panel">
-            <div class="search-input-wrapper">
-            <button class="bars-button">
-                <i class="bars-button__icon fa fa-bars"></i>
-            </button>
-            <SearchInput
-              onChange={{onSearchInputChange}}
-              value={{props.dialogs.search}}
-              />
-            </div>
-            <ul class="dialogs__list">
-            {% if !props.dialogs.items.length && props.dialogs.loading %}
-                <LoadingIndicator />
-            {% endif %}
-            {% if props.dialogs.items.length %}
-                {% for dialog in dialogs %}
-                    <DialogListItem
-                      {% if props.dialogs.selectedDialogId === dialog.id %}
-                        selected={{true}}
-                      {% endif %}
-                      id={{dialog.id}}
-                      userName={{dialog.userName}}
-                      time={{dialog.time}}
-                      isMy={{dialog.isMy}}
-                      lastMessage={{dialog.lastMessage}}
-                      background={{dialog.background}}
-                      onClick={{onSelectDialog}}
-                      unreadCount={{dialog.unreadCount}}
-                    />
-                {% endfor %}
-            {% endif %}
-            </ul>
-        </aside>
-    `,
+      <aside class="dialogs-panel">
+          <div class="search-input-wrapper">
+          <button class="bars-button">
+              <i class="bars-button__icon fa fa-bars"></i>
+          </button>
+          <SearchInput
+            onChange={{onSearchInputChange}}
+            value={{props.dialogs.search}}
+            />
+          </div>
+          <ul class="dialogs__list">
+          {% if !props.dialogs.items.length && props.dialogs.loading %}
+              <LoadingIndicator />
+          {% endif %}
+          {% if props.dialogs.items.length %}
+              {% for dialog in dialogs %}
+                  <DialogListItem
+                    {% if props.dialogs.selectedDialogId === dialog.id %}
+                      selected={{true}}
+                    {% endif %}
+                    id={{dialog.id}}
+                    userName={{dialog.userName}}
+                    time={{dialog.time}}
+                    isMy={{dialog.isMy}}
+                    lastMessage={{dialog.lastMessage}}
+                    background={{dialog.background}}
+                    onClick={{onSelectDialog}}
+                    unreadCount={{dialog.unreadCount}}
+                  />
+              {% endfor %}
+          {% endif %}
+          </ul>
+      </aside>
+      `,
       {
         onSelectDialog: this.onSelectDialog,
         dialogs: searchedDialogs,

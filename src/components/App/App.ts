@@ -1,7 +1,7 @@
-import { Component } from '../../core/Component.js';
-import { Router } from '../../core/Router/Router.js';
-import { StateType } from '../../core/types.js';
-import { DialogsListStore } from '../../stores/dialogs.store.js';
+import { Component } from '../../core/Component';
+import { Router } from '../../core/Router/Router';
+import { StateType } from '../../core/types';
+import { DialogsListStore } from '../../stores/dialogs.store';
 
 export class App extends Component {
   dialogsStore: DialogsListStore;
@@ -26,6 +26,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
+    document.title = 'MNMessager';
     this.dialogsStore.startLoadItems();
   }
 
@@ -37,32 +38,32 @@ export class App extends Component {
     const { pathname } = this._props.router as StateType;
     return [
       `
-        <div class="app">
-            {% if pathname === "/chat" || pathname === "/profile" || pathname === "/menu" %}
-                <LeftPanel />
-                {% if pathname === "/profile" %}
-                    <Profile />
-                {% elif pathname === "/chat" || pathname === "/menu" %}
-                    <DialogsList />
-                    {% if props.dialogs.selectedDialogId === null %}
-                      <div class="chat-panel chat-panel--empty">
-                        Выберите чат чтобы отправить сообщение
-                      </div>
-                    {% else %}
-                      <ChatPanel selectedChatId={{props.dialogs.selectedDialogId}} />
-                    {% endif %}
-                {% endif %}
-            {% endif %}
-            {% if pathname === "/login" %}
-                <Login />
-            {% elif pathname === "/registration" %}
-                <Registration />
-            {% endif %}
-            {% if !routes.includes(pathname) %}
-              <ErrorPage code="404" title="Страница не найдена" />
-            {% endif %}
-            </div>
-    `,
+      <div class="app">
+          {% if pathname === "/chat" || pathname === "/profile" || pathname === "/menu" %}
+              <LeftPanel />
+              {% if pathname === "/profile" %}
+                  <Profile />
+              {% elif pathname === "/chat" || pathname === "/menu" %}
+                  <DialogsList />
+                  {% if props.dialogs.selectedDialogId === null %}
+                    <div class="chat-panel chat-panel--empty">
+                      Выберите чат чтобы отправить сообщение
+                    </div>
+                  {% else %}
+                    <ChatPanel selectedChatId={{props.dialogs.selectedDialogId}} />
+                  {% endif %}
+              {% endif %}
+          {% endif %}
+          {% if pathname === "/login" %}
+              <Login />
+          {% elif pathname === "/registration" %}
+              <Registration />
+          {% endif %}
+          {% if !routes.includes(pathname) %}
+            <ErrorPage code="404" title="Страница не найдена" />
+          {% endif %}
+        </div>
+      `,
       { pathname, routes: this._availableRoutes },
     ];
   }

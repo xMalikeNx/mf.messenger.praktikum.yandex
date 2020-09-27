@@ -1,4 +1,4 @@
-export { Login } from './Login/Login.js';
-export { Registration } from './Registration/Registration.js';
-export { Profile } from './Profile/index.js';
-export { ErrorPage } from './ErrorPage/index.js';
+export { Login } from './Login/Login';
+export { Registration } from './Registration/Registration';
+export { Profile } from './Profile/index';
+export { ErrorPage } from './ErrorPage/index';

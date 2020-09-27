@@ -1,4 +1,4 @@
-import { regexMap } from './utils/regexMap.js';
+import { regexMap } from './utils/regexMap';
 import { StateType } from '../types';
 
 export class TemplateAnalyzer {
@@ -118,7 +118,7 @@ export class TemplateAnalyzer {
     if (line.match(regexMap.openLoopRegex)) {
       return line.replace(
         regexMap.openLoopRegex,
-        (match, ...args) => `
+        (_match, ...args) => `
             for (let ${args[0]} of ${args[1]}) {\n
         `
       );

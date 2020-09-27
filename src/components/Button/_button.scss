@@ -1,0 +1,22 @@
+.button {
+  padding: 11px 55px;
+  color: #fff;
+  font-size: 16px;
+  background: #b98eff;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s background ease, 0.3s color ease;
+  &:hover {
+    background: #c391f3;
+  }
+}
+.button.button--outline {
+  color: #2c2c2c;
+  background: #fff;
+  border-color: #b98eff;
+  &:hover {
+    color: #fff;
+    background: #b98eff;
+  }
+}

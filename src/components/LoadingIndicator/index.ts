@@ -1,1 +1,1 @@
-export { LoadingIndicator } from './LoadingIndicator.js';
+export { LoadingIndicator } from './LoadingIndicator';

@@ -1,5 +1,5 @@
-import { Component } from '../../core/Component.js';
-import { Router } from '../../core/Router/Router.js';
+import { Component } from '../../core/Component';
+import { Router } from '../../core/Router/Router';
 import { StateType } from '../../core/types';
 
 export class Link extends Component {
@@ -31,9 +31,9 @@ export class Link extends Component {
 
     return [
       `
-        <button class={{className}} onClick={{onChangeRoute}}>
-            {{props.text}}
-        </button>
+      <button class={{className}} onClick={{onChangeRoute}}>
+        {{props.text}}
+      </button>
       `,
       { onChangeRoute: this.onChangeRoute.bind(this), className },
     ];

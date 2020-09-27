@@ -1,0 +1,20 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  background: #b98eff;
+  border-radius: 50%;
+}
+@media screen and (max-width: 761px) {
+  .avatar {
+  font-size: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 15px;
+  }
+}

@@ -1,1 +1,1 @@
-export { LeftPanelMenu } from './LeftPanelMenu.js';
+export { LeftPanelMenu } from './LeftPanelMenu';

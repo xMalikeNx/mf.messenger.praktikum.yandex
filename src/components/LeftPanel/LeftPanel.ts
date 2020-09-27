@@ -1,6 +1,6 @@
-import { Component } from '../../core/Component.js';
-import { Router } from '../../core/Router/Router.js';
-import { StateType } from '../../core/types.js';
+import { Component } from '../../core/Component';
+import { Router } from '../../core/Router/Router';
+import { StateType } from '../../core/types';
 
 export class LeftPanel extends Component {
   private router: Router;
@@ -36,26 +36,26 @@ export class LeftPanel extends Component {
   render(): [string, StateType?] {
     return [
       `
-        <aside class="left-panel">
-            <nav class="left-panel-navs">
-                {% for item in state.items %}
-                    <Link
-                        link={{item.link}}
-                        {% if props.router.pathname === item.link %}
-                            class="left-panel-navs__item current"
-                        {% else %}
-                            class="left-panel-navs__item"
-                        {% endif %}
-                    >
-                    <i class={{item.icon}} />
-                    </Link>
-                {% endfor %}
-            </nav>
-            {% if props.router.pathname === "/menu" || props.router.pathname === "/profile" %}
-              <LeftPanelMenu />
-            {% endif %}
-        </aside>
-        `,
+      <aside class="left-panel">
+        <nav class="left-panel-navs">
+          {% for item in state.items %}
+            <Link
+              link={{item.link}}
+              {% if props.router.pathname === item.link %}
+                  class="left-panel-navs__item current"
+              {% else %}
+                  class="left-panel-navs__item"
+              {% endif %}
+            >
+              <i class={{item.icon}} />
+            </Link>
+          {% endfor %}
+        </nav>
+        {% if props.router.pathname === "/menu" || props.router.pathname === "/profile" %}
+          <LeftPanelMenu />
+        {% endif %}
+      </aside>
+      `,
     ];
   }
 }
