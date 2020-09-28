@@ -59,7 +59,3 @@ export class LeftPanel extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('LeftPanel', LeftPanel);
-}

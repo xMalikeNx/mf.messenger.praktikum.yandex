@@ -11,7 +11,3 @@ export class Avatar extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('Avatar', Avatar);
-}

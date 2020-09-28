@@ -50,7 +50,3 @@ export class LoginForm extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('LoginForm', LoginForm);
-}

@@ -62,7 +62,3 @@ export class DialogListItem extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('DialogListItem', DialogListItem);
-}

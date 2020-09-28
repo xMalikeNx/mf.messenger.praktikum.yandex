@@ -15,7 +15,3 @@ export class ErrorPage extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('ErrorPage', ErrorPage);
-}

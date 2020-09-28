@@ -1,7 +1,7 @@
 import { Component } from '../src/core/Component';
 import { MNTemplator } from '../src/core/templator/Templator';
 
-const templator = new MNTemplator();
+const templator = MNTemplator.getInstance();
 
 describe('Templator', () => {
   test('Compile with 2 root elements', () => {

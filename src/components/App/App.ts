@@ -68,7 +68,3 @@ export class App extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('App', App);
-}

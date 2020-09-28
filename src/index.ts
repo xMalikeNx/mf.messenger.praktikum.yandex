@@ -2,7 +2,7 @@ import { App } from './components/index';
 import { MNTemplator } from './core/templator/Templator';
 import { initComponents } from './utils/initComponents';
 
-(window as any).templator = new MNTemplator();
+const templator = MNTemplator.getInstance();
 initComponents();
 
 const root = document.querySelector('#root');

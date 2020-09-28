@@ -14,7 +14,3 @@ export class Profile extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('Profile', Profile);
-}

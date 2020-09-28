@@ -32,7 +32,3 @@ export class InputField extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('InputField', InputField);
-}

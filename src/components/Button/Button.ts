@@ -33,7 +33,3 @@ export class Button extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('Button', Button);
-}

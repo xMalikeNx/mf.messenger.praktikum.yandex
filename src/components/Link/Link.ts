@@ -39,7 +39,3 @@ export class Link extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('Link', Link);
-}

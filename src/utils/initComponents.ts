@@ -1,7 +1,9 @@
 import * as Components from '../components/index';
+import { MNTemplator } from '../core/templator/Templator';
 import * as Pages from '../pages/index';
 
 export function initComponents() {
+  const templator = MNTemplator.getInstance();
   // register components
   templator.registry.register('App', Components.App);
   templator.registry.register('Button', Components.Button);

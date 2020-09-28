@@ -12,7 +12,3 @@ export class Login extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('Login', Login);
-}

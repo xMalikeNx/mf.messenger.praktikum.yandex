@@ -1,5 +1,8 @@
 import { EventBus } from './EventBus';
+import { MNTemplator } from './templator/Templator';
 import { StateType } from './types';
+
+const templator = MNTemplator.getInstance();
 
 export class Component {
   static readonly EVENTS = {
@@ -94,11 +97,7 @@ export class Component {
   protected _render() {
     if (this.element) {
       const [template, localVariables] = this.render();
-      const el = templator.compileTemplate(
-        template,
-        this,
-        localVariables,
-      );
+      const el = templator.compileTemplate(template, this, localVariables);
       this.element.replaceWith(el);
       this.element = el;
     }

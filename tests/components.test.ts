@@ -3,7 +3,7 @@ import { MNTemplator } from '../src/core/templator/Templator';
 
 let templator: MNTemplator;
 beforeAll(() => {
-  templator = new MNTemplator();
+  templator = MNTemplator.getInstance();
 });
 
 describe('Button', () => {

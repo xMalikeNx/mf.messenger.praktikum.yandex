@@ -81,7 +81,3 @@ export class ProfileForm extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('ProfileForm', ProfileForm);
-}

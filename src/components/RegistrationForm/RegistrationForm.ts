@@ -59,7 +59,3 @@ export class RegistrationForm extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('RegistrationForm', RegistrationForm);
-}

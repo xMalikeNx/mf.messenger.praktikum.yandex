@@ -5,12 +5,22 @@ import { TagTreeGenerator } from './TagTreeGenerator';
 import { TemplateAnalyzer } from './TemplateAnalyzer';
 
 export class MNTemplator {
+  private static _instance: MNTemplator | null = null;
+
+  private constructor() {}
+
+  public static getInstance(): MNTemplator {
+    if (MNTemplator._instance === null) {
+      MNTemplator._instance = new MNTemplator();
+    }
+    return MNTemplator._instance;
+  }
+
   public registry: ComponentsRegistry = new ComponentsRegistry();
 
   compile(Module: typeof Component, props: StateType): HTMLElement {
     const instance = new Module(props);
     const [template, localVariables] = instance.render();
-
     const compiled = this.compileTemplate(template, instance, localVariables);
     return compiled;
   }

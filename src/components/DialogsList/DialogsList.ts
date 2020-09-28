@@ -81,7 +81,3 @@ export class DialogsList extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('DialogsList', DialogsList);
-}

@@ -12,7 +12,3 @@ export class Registration extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('Registration', Registration);
-}

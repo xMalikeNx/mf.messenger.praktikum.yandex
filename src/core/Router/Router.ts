@@ -19,9 +19,9 @@ export class Router {
   }
 
   private _start() {
-    window.onpopstate = ((_event: PopStateEvent) => {
+    window.addEventListener('popstate', (_event: PopStateEvent) => {
       this._onChangeRoute();
-    }).bind(this);
+    });
   }
 
   public go(pathname: string) {

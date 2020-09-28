@@ -30,7 +30,3 @@ export class Message extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('Message', Message);
-}

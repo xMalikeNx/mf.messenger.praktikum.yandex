@@ -32,7 +32,3 @@ export class SearchInput extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('SearchInput', SearchInput);
-}

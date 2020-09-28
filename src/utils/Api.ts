@@ -4,7 +4,6 @@ import { parseQueryParams } from './parseQueryParams';
 export class Api extends MNRequest {
   constructor() {
     super();
-    console.log(this);
   }
   public get(url: string, params?: RequestBodyType) {
     let requestUrl = url;

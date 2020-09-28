@@ -89,7 +89,3 @@ export class ChatPanel extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('ChatPanel', ChatPanel);
-}

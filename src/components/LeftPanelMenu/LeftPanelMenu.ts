@@ -43,7 +43,3 @@ export class LeftPanelMenu extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('LeftPanelMenu', LeftPanelMenu);
-}

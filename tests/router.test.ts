@@ -15,22 +15,35 @@ describe('Router location', () => {
     expect(window.location.pathname).toEqual('/profile');
   });
 
-  // этот тест работать не хочет
-  // у меня в коде back не используется, но работает, проверял
-  test('Back', () => {
+  test('Back', (done) => {
+    const handlePopState = () => {
+      expect(window.location.pathname).toEqual('/chats');
+      window.removeEventListener('popstate', handlePopState);
+      done();
+    };
+    window.addEventListener('popstate', handlePopState);
+
     router.go('/chats');
     router.go('/profile');
     router.back();
-    //window.history.back(); - так тоже падает
-    expect(window.location.pathname).toEqual('/chats');
   });
 
-  test('Forward', () => {
+  test('Forward', (done) => {
+    let isBack = false;
+    const handlePopState = () => {
+      if (!isBack) {
+        isBack = true;
+        return;
+      }
+      expect(window.location.pathname).toEqual('/profile');
+      window.removeEventListener('popstate', handlePopState);
+      done();
+    };
+    window.addEventListener('popstate', handlePopState);
     router.go('/chats');
     router.go('/profile');
     router.back();
-    router.forward();
-    expect(window.location.pathname).toEqual('/profile');
+    setTimeout(() => router.forward(), 0);
   });
 });
 

@@ -14,7 +14,3 @@ export class LoadingIndicator extends Component {
     ];
   }
 }
-
-if (typeof templator !== 'undefined') {
-  templator.registry.register('LoadingIndicator', LoadingIndicator);
-}
