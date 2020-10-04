@@ -22,7 +22,7 @@ export class ChatStore extends Store {
     this.api = new Api();
   }
 
-  fetchMessagesFromDialog = async (dialogId: number) => {
+  fetchMessagesFromDialog = async (dialogId: number): Promise<void> => {
     this.updateState({
       loading: true,
     });

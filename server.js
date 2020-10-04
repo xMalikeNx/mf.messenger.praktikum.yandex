@@ -48,7 +48,7 @@ app.get('*', (req, res) => {
       return res.sendFile(path.join(__dirname, './dist' + req.path + '.js'));
     }
 
-    return res.sendFile(path.join(__dirname, './static/index.html'));
+    return res.sendFile(path.join(__dirname, './dist/index.html'));
   }
 });
 

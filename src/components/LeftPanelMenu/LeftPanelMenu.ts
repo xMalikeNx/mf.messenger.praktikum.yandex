@@ -2,6 +2,8 @@ import { Component } from '../../core/Component';
 import { Router } from '../../core/Router/Router';
 import { StateType } from '../../core/types';
 
+import './leftPanelMenu.scss';
+
 export class LeftPanelMenu extends Component {
   private router: Router;
 

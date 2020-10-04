@@ -2,6 +2,8 @@ import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 import { ChatStore } from '../../stores/chat.store';
 
+import './chatPanel.scss';
+
 export class ChatPanel extends Component {
   private chatStore: ChatStore;
 
@@ -12,7 +14,7 @@ export class ChatPanel extends Component {
     this.chatStore.subscribe(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.chatStore.fetchMessagesFromDialog(
       parseInt(this.props.selectedChatId as string)
     );

@@ -6,6 +6,8 @@ import {
   DialogsState,
 } from '../../stores/dialogs.store';
 
+import './dialogsList.scss';
+
 export class DialogsList extends Component {
   dialogsStore: DialogsListStore;
 
@@ -19,7 +21,7 @@ export class DialogsList extends Component {
     this.dialogsStore.selectDialog(dialogId);
   };
 
-  onSearchInputChange = (e: KeyboardEvent) => {
+  onSearchInputChange = (e: KeyboardEvent): void => {
     this.dialogsStore.changeSearch((e.target as HTMLInputElement).value);
   };
 

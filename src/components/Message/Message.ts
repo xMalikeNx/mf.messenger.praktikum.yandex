@@ -1,5 +1,7 @@
 import { Component } from '../../core/Component';
 
+import './message.scss';
+
 export class Message extends Component {
   render(): [string] {
     return [

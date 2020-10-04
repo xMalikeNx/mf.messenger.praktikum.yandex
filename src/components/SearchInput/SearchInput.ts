@@ -1,15 +1,17 @@
 import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 
+import './searchInput.scss';
+
 export type searchInputProps = {
   onChange?: (e: KeyboardEvent) => void;
   value?: string;
 };
 
 export class SearchInput extends Component {
-  onItemChange = (e: KeyboardEvent) => {
+  onItemChange = (e: KeyboardEvent): void => {
     if (typeof (this.props as searchInputProps).onChange === 'function') {
-      (this.props as searchInputProps).onChange!(e);
+      (this.props as searchInputProps).onChange?.(e);
     }
   };
 

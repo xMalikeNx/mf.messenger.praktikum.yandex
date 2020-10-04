@@ -6,7 +6,7 @@ export function getPropertyByPath(obj: Indexed, path: string): unknown {
   }
 
   let current = obj;
-  for (let part of path.split('.')) {
+  for (const part of path.split('.')) {
     current = current[part] as Indexed;
     if (!current) {
       return undefined;

@@ -15,15 +15,15 @@ export class LoginStore extends Store {
     };
   }
 
-  onFieldChange = (e: KeyboardEvent) => {
+  onFieldChange = (e: KeyboardEvent): void => {
     const { name, value } = e.target as HTMLInputElement;
     this.updateState({
       [name]: value,
     });
   };
 
-  onFormSubmit = () => {
-    let errors: string[] = [];
+  onFormSubmit = (): void => {
+    const errors: string[] = [];
 
     if (this.state.login !== 'admin' || this.state.password !== 'hello') {
       errors.push('Логин или пароль введены не верно');

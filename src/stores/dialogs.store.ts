@@ -32,7 +32,7 @@ export class DialogsListStore extends Store {
     this.api = new Api();
   }
 
-  public async startLoadItems() {
+  public async startLoadItems(): Promise<void> {
     const res = await this.api.get('mock/dialogs.json');
     const items = parseJSON(res.responseText);
     if (items.isOk) {
@@ -59,7 +59,7 @@ export class DialogsListStore extends Store {
     });
   }
 
-  changeSearch = (value: string) => {
+  changeSearch = (value: string): void => {
     this.updateState({
       search: value,
     });

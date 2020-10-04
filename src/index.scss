@@ -1,5 +1,7 @@
-@import './font-awesome/css/font-awesome.css';
 @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+$fa-font-path: '~font-awesome/fonts/';
+@import '~font-awesome/scss/font-awesome';
+
 * {
   padding: 0;
   margin: 0;
@@ -66,7 +68,7 @@
   margin: auto;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
 }
 .form__title {
   margin-bottom: 50px;
@@ -113,7 +115,7 @@
 @media screen and (max-width: 761px) {
   .content-view {
     width: 100%;
-    left: 0px;
+    left: 0;
     padding-top: 15px;
     padding-bottom: 15px;
     .form {
@@ -148,16 +150,3 @@
     font-size: 14px;
   }
 }
-
-@import './components/Button/button';
-@import './components/ChatPanel/chatPanel';
-@import './components/LeftPanel/leftPanel';
-@import './components/LeftPanelMenu/leftPanelMenu';
-@import './components/DialogsList/dialogsList';
-@import './components/DialogListItem/dialogListItem';
-@import './components/Avatar/avatar';
-@import './components/SearchInput/searchInput';
-@import './components/InputField/inputField.scss';
-@import './components/LoadingIndicator/loadingIndicator.scss';
-@import './components/Message/message.scss';
-@import './pages/ErrorPage/errorPage.scss';

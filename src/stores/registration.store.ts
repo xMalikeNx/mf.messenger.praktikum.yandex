@@ -18,15 +18,15 @@ export class RegistrationStore extends Store {
     };
   }
 
-  onFieldChange = (e: KeyboardEvent) => {
+  onFieldChange = (e: KeyboardEvent): void => {
     const { name, value } = e.target as HTMLInputElement;
     this.updateState({
       [name]: value,
     });
   };
 
-  onFormSubmit = () => {
-    let errors: string[] = [];
+  onFormSubmit = (): void => {
+    const errors: string[] = [];
 
     if (!validate(this.state.login as string)) {
       errors.push('Логин содержит недопустимые символы');

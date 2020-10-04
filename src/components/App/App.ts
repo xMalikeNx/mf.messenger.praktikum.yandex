@@ -25,13 +25,9 @@ export class App extends Component {
     this.dialogsStore.subscribe(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     document.title = 'MNMessager';
     this.dialogsStore.startLoadItems();
-  }
-
-  componentWillUnmount() {
-    this.router.unsubscribe(this);
   }
 
   render(): [string, StateType?] {

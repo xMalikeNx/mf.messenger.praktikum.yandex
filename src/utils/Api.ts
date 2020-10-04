@@ -5,7 +5,7 @@ export class Api extends MNRequest {
   constructor() {
     super();
   }
-  public get(url: string, params?: RequestBodyType) {
+  public get(url: string, params?: RequestBodyType): Promise<XMLHttpRequest> {
     let requestUrl = url;
     if (params?.body) {
       requestUrl = `${requestUrl}${parseQueryParams(params.body)}`;
@@ -17,21 +17,21 @@ export class Api extends MNRequest {
     });
   }
 
-  public post(url: string, params?: RequestBodyType) {
+  public post(url: string, params?: RequestBodyType): Promise<XMLHttpRequest> {
     return this.request(`${this.baseUrl}${url}`, {
       method: 'POST',
       ...params,
     });
   }
 
-  public put(url: string, params?: RequestBodyType) {
+  public put(url: string, params?: RequestBodyType): Promise<XMLHttpRequest> {
     return this.request(`${this.baseUrl}${url}`, {
       method: 'PUT',
       ...params,
     });
   }
 
-  public delete(url: string, params?: RequestBodyType) {
+  public delete(url: string, params?: RequestBodyType): Promise<XMLHttpRequest> {
     return this.request(`${this.baseUrl}${url}`, {
       method: 'DELETE',
       ...params,

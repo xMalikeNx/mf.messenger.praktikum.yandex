@@ -2,7 +2,7 @@ import * as Components from '../components/index';
 import { MNTemplator } from '../core/templator/Templator';
 import * as Pages from '../pages/index';
 
-export function initComponents() {
+export function initComponents(): void {
   const templator = MNTemplator.getInstance();
   // register components
   templator.registry.register('App', Components.App);

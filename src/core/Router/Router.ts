@@ -19,29 +19,30 @@ export class Router {
   }
 
   private _start() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     window.addEventListener('popstate', (_event: PopStateEvent) => {
       this._onChangeRoute();
     });
   }
 
-  public go(pathname: string) {
+  public go(pathname: string): void {
     this.history.pushState({}, '', pathname);
     this._onChangeRoute();
   }
 
-  public back() {
+  public back(): void {
     this.history.back();
   }
 
-  public forward() {
+  public forward(): void {
     this.history.forward();
   }
 
-  private _onChangeRoute() {
+  private _onChangeRoute(): void {
     this._eventBus.emit(Router.ROUTER_EVENTS.CR, this.pathname);
   }
 
-  public subscribe(instance: Component) {
+  public subscribe(instance: Component): void {
     this._subscribers.push(instance);
     this.updateSubscriberProps(instance);
   }
@@ -58,21 +59,21 @@ export class Router {
     subscriber.setProps({ router: { pathname: this.pathname } });
   }
 
-  public unsubscribe(instance: Component) {
+  public unsubscribe(instance: Component): void {
     this._subscribers = this._subscribers.filter(
       (subscriber) => subscriber !== instance
     );
   }
 
-  get pathname() {
+  get pathname(): string {
     return window.location.pathname;
   }
 
-  get history() {
+  get history(): History {
     return this._history;
   }
 
-  public static getInstance() {
+  public static getInstance(): Router {
     if (!Router.instance) {
       Router.instance = new Router();
     }

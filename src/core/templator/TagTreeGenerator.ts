@@ -65,7 +65,7 @@ export class TagTreeGenerator {
   }
 
   private _generateDom(root: Branch) {
-    let element = this._createElement(root);
+    const element = this._createElement(root);
     this._setContent(root);
 
     if (element) {
@@ -152,7 +152,7 @@ export class TagTreeGenerator {
     }
 
     return root.attributes.reduce((result, { attribute, value }) => {
-      let ctxValue = this._extractFromCtx(value as string);
+      const ctxValue = this._extractFromCtx(value as string);
 
       if (ctxValue === 'null') {
         result[attribute as string] = null;
@@ -210,7 +210,7 @@ export class TagTreeGenerator {
     const tree: TagTree = [];
 
     let parentBranch: Branch | null = null;
-    for (let line of lines) {
+    for (const line of lines) {
       if (this._checkClose(line)) {
         if (
           parentBranch !== null &&
@@ -224,7 +224,7 @@ export class TagTreeGenerator {
         continue;
       }
 
-      let newBranch: Branch = this._generateBranch();
+      const newBranch: Branch = this._generateBranch();
       if (parentBranch !== null) {
         newBranch.parent = parentBranch;
         parentBranch.childrens.push(newBranch);

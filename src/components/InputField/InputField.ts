@@ -1,8 +1,10 @@
 import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 
+import './inputField.scss';
+
 export class InputField extends Component {
-  onChange = (e: KeyboardEvent) => {
+  onChange = (e: KeyboardEvent): void => {
     console.log(this.props);
     if (typeof this.props.onFieldChange === 'function') {
       this.props.onFieldChange(e);

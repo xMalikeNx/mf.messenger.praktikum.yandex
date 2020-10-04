@@ -2,6 +2,8 @@ import { Component } from '../../core/Component';
 import { Router } from '../../core/Router/Router';
 import { StateType } from '../../core/types';
 
+import './leftPanel.scss';
+
 export class LeftPanel extends Component {
   private router: Router;
 
@@ -25,7 +27,7 @@ export class LeftPanel extends Component {
     this.router.subscribe(this);
   }
 
-  onClick = (tag: string) => () => {
+  onClick = (tag: string) => (): void => {
     const { onClick } = this.props;
 
     if (typeof onClick === 'function') {

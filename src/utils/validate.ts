@@ -1,6 +1,6 @@
 export type ValidationTypes = 'email' | 'text' | 'hex';
 
-export const validate = (inp: string, type: ValidationTypes = 'text') => {
+export const validate = (inp: string, type: ValidationTypes = 'text'): boolean => {
   if (!inp.length) {
     return false;
   }

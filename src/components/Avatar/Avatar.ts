@@ -1,5 +1,7 @@
 import { Component } from '../../core/Component';
 
+import './avatar.scss';
+
 export class Avatar extends Component {
   render(): [string] {
     return [

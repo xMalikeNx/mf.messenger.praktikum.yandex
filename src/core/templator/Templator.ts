@@ -7,6 +7,7 @@ import { TemplateAnalyzer } from './TemplateAnalyzer';
 export class MNTemplator {
   private static _instance: MNTemplator | null = null;
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() {}
 
   public static getInstance(): MNTemplator {
@@ -21,8 +22,7 @@ export class MNTemplator {
   compile(Module: typeof Component, props: StateType): HTMLElement {
     const instance = new Module(props);
     const [template, localVariables] = instance.render();
-    const compiled = this.compileTemplate(template, instance, localVariables);
-    return compiled;
+    return this.compileTemplate(template, instance, localVariables);
   }
 
   compileTemplate(
@@ -30,13 +30,13 @@ export class MNTemplator {
     module: Component,
     localVariables?: StateType
   ): HTMLElement {
-    let analyzer = new TemplateAnalyzer(template, {
+    const analyzer = new TemplateAnalyzer(template, {
       props: module.props,
       state: module.state,
       ...localVariables,
     });
 
-    let analyzedTemplate = analyzer.extract();
+    const analyzedTemplate = analyzer.extract();
 
     const tagGenerator = new TagTreeGenerator(
       analyzedTemplate,
@@ -48,7 +48,6 @@ export class MNTemplator {
       module,
       this
     );
-    const item = tagGenerator.generate();
-    return item;
+    return tagGenerator.generate();
   }
 }

@@ -1,6 +1,8 @@
 import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 
+import './button.scss';
+
 export class Button extends Component {
   constructor(props: StateType) {
     super(props);
@@ -11,13 +13,13 @@ export class Button extends Component {
     };
   }
 
-  handleClick() {
+  handleClick(): void {
     this.setState({
       name: !this.state.name,
     });
   }
 
-  timeout() {
+  timeout(): void {
     this.setState({
       loading: false,
     });

@@ -14,12 +14,11 @@ export class Link extends Component {
       className: this.props.className || '',
     };
 
-    const router = Router.getInstance();
-    this._router = router;
+    this._router = Router.getInstance();
     this._router.subscribe(this);
   }
 
-  onChangeRoute() {
+  onChangeRoute(): void {
     const { link } = this.props;
     if (typeof link === 'string') {
       this._router.go(link);

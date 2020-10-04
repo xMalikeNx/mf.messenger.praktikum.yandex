@@ -1,6 +1,7 @@
-import { App } from './components/index';
+import { App } from './components';
 import { MNTemplator } from './core/templator/Templator';
 import { initComponents } from './utils/initComponents';
+import './index.scss';
 
 const templator = MNTemplator.getInstance();
 initComponents();

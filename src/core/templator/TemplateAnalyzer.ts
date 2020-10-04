@@ -14,13 +14,13 @@ export class TemplateAnalyzer {
 
   extract(): string {
     const tpl = this._template
-      .replace(/(\{%)/g, '\n$1')
-      .replace(/(%\})/g, '$1\n')
+      .replace(/({%)/g, '\n$1')
+      .replace(/(%})/g, '$1\n')
       .replace(/[ ]{2,}/g, '')
       .split('\n')
       .filter((line) => !!line.trim());
 
-    let code: string = `
+    let code = `
         return function(${Object.keys(this._ctx)}){
             const result = [];
     `;
@@ -44,14 +44,14 @@ export class TemplateAnalyzer {
   }
 
   _analyzeLine(line: string): string {
-    const result = line.replace(/'/g, "\\'");
+    const result = line.replace(/'/g, '\\\'');
 
     let replaced = result;
     let row;
 
     while ((row = regexMap.attributes.exec(result))) {
       if (row && row.groups) {
-        let { attribute, value } = row.groups;
+        const { attribute, value } = row.groups;
         if (!attribute || !value) {
           continue;
         }
@@ -68,6 +68,7 @@ export class TemplateAnalyzer {
     if (match && match.length) {
       replaced = replaced.replace(
         regexMap.value,
+        // eslint-disable-next-line quotes
         "'+ `${typeof $1 === 'object' || typeof $1 === 'function' || typeof $1 === 'undefined' || $1 === null ? '{{$1}}' : $1}` +'"
       );
     } else {

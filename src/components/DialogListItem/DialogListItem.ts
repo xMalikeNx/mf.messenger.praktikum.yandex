@@ -2,6 +2,8 @@ import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 import { getFirstLitera } from '../../utils/getFirstLitera';
 
+import './dialogListItem.scss';
+
 type DialogListItemProps = {
   id: number | string;
   userName: string;
@@ -9,7 +11,7 @@ type DialogListItemProps = {
 };
 
 export class DialogListItem extends Component {
-  onSelectDialog = () => {
+  onSelectDialog = (): void => {
     const { onClick, id } = this.props as DialogListItemProps;
 
     if (typeof onClick === 'function') {

@@ -27,11 +27,11 @@ export class Store {
     this._eventBus.emit(Store.EVENTS.UPDATE);
   }
 
-  get state() {
+  get state(): StateType {
     return this._state;
   }
 
-  public subscribe(instance: Component) {
+  public subscribe(instance: Component): void {
     if (this._displayName === null) {
       console.error('Display name not provided');
       return;
@@ -54,13 +54,13 @@ export class Store {
     });
   }
 
-  public unsubscribe(instance: Component) {
+  public unsubscribe(instance: Component): void {
     this._subscribers = this._subscribers.filter(
       (subscriber) => subscriber !== instance
     );
   }
 
-  public updateState(newState: StateType) {
+  public updateState(newState: StateType): void {
     this.state = Object.assign(this.state, newState);
   }
 

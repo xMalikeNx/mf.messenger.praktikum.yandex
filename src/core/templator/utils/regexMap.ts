@@ -6,9 +6,9 @@ export const regexMap = {
   elifConditionRegex: /{% elif(?<expression>.*?) %}/gi,
   elseConditionRegex: /{% else %}/gi,
   closeConditionRegex: /{% endif %}/gi,
-  openTag: /(<(?<tag>[^>\/ ]+).*?>)/g,
+  openTag: /(<(?<tag>[^>/ ]+).*?>)/g,
   closingTag: /(<\/.*?>)/g,
-  singleLineTag: /(<(?<tag>[^ \/]+).*? ?\/>)/g,
-  attributes: /<(?:[^ ]*)|(?<attribute>[\w\-]+)=(?<value>(?:{{|"{1,2}).*?(?:"{1,2}|}}))+?/g,
+  singleLineTag: /(<(?<tag>[^ /]+).*? ?\/>)/g,
+  attributes: /<(?:[^ ]*)|(?<attribute>[\w-]+)=(?<value>(?:{{|"{1,2}).*?(?:"{1,2}|}}))+?/g,
   value: /{{(.*?)}}/g,
 };

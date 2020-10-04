@@ -33,15 +33,15 @@ export class Component {
     this.eventBus.on(Component.EVENTS.RENDER, this._render.bind(this));
   }
 
-  setState(newState: StateType) {
+  setState(newState: StateType): void {
     this.state = Object.assign(this.state, newState);
   }
 
-  setProps(newProps: StateType) {
+  setProps(newProps: StateType): void {
     this.props = Object.assign(this.props, newProps);
   }
 
-  get state() {
+  get state(): StateType {
     return this._state;
   }
 
@@ -61,15 +61,16 @@ export class Component {
     this.eventBus.emit(Component.EVENTS.CDU, prevProps, prevState);
   }
 
-  get props() {
+  get props(): StateType {
     return this._props;
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   get eventBus() {
     return this._eventBus;
   }
 
-  get element() {
+  get element(): HTMLElement | null {
     return this._element;
   }
 
@@ -94,7 +95,7 @@ export class Component {
     }
   }
 
-  protected _render() {
+  protected _render(): void {
     if (this.element) {
       const [template, localVariables] = this.render();
       const el = templator.compileTemplate(template, this, localVariables);
@@ -103,8 +104,10 @@ export class Component {
     }
   }
 
-  componentDidMount() {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  componentDidMount(): void {}
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   componentDidUpdate(_prevProps: StateType, _prevState: StateType): boolean {
     return true;
   }
