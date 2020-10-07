@@ -1,8 +1,8 @@
+import { DeepPartial } from '../types';
 import { Component } from './Component';
 import { EventBus } from './EventBus';
-import { StateType } from './types';
 
-export class Store {
+export class Store<T = Record<string, unknown>> {
   static readonly EVENTS = {
     UPDATE: 'update',
   };
@@ -11,7 +11,7 @@ export class Store {
 
   protected _eventBus: EventBus;
 
-  protected _state: StateType = {};
+  protected _state: T = {} as T;
 
   protected _displayName: string | null = null;
 
@@ -22,12 +22,12 @@ export class Store {
     this._init();
   }
 
-  set state(value: StateType) {
+  set state(value: T) {
     this._state = value;
     this._eventBus.emit(Store.EVENTS.UPDATE);
   }
 
-  get state(): StateType {
+  get state(): T {
     return this._state;
   }
 
@@ -60,7 +60,7 @@ export class Store {
     );
   }
 
-  public updateState(newState: StateType): void {
+  public updateState(newState: DeepPartial<T>): void {
     this.state = Object.assign(this.state, newState);
   }
 

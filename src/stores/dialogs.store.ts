@@ -33,12 +33,12 @@ export class DialogsListStore extends Store {
   }
 
   public async startLoadItems(): Promise<void> {
-    const res = await this.api.get('mock/dialogs.json');
+    const res = await this.api.get('chats');
     const items = parseJSON(res.responseText);
     if (items.isOk) {
       this.updateState({
         loading: false,
-        items: items.result,
+        items: items.result || [],
       });
     }
   }

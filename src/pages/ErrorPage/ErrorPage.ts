@@ -2,7 +2,7 @@ import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 import './errorPage.scss';
 
-export class ErrorPage extends Component {
+export class ErrorPage extends Component<{name: string}> {
   render(): [string, StateType?] {
     return [
       `

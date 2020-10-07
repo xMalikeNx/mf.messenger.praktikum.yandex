@@ -130,6 +130,25 @@ export class TagTreeGenerator {
     });
   }
 
+  private removeChildren(component: Component): void {
+    if (!component.children.length) {
+      return;
+    }
+
+    component.children.forEach((child: Component | null, idx: number) => {
+      if (child) {
+        child.componentWillUnmount();
+      }
+      if (child && child.children.length) {
+        this.removeChildren(child);
+      }
+
+      component.children[idx] = null;
+    });
+
+    component.children = [];
+  }
+
   private _createElement(root: Branch) {
     const { tag } = root;
 
@@ -141,9 +160,10 @@ export class TagTreeGenerator {
       return document.createElement(tag);
     }
 
+    this.removeChildren(this.module);
     const Module = this.templator.registry.get(tag);
     const props = this._extractProps(root);
-    return this.templator.compile(Module, props);
+    return this.templator.compile(Module, props, this.module);
   }
 
   private _extractProps(root: Branch) {

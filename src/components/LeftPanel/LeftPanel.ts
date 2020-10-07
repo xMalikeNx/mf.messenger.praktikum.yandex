@@ -7,8 +7,8 @@ import './leftPanel.scss';
 export class LeftPanel extends Component {
   private router: Router;
 
-  constructor(props: StateType) {
-    super(props);
+  constructor(props: StateType, parent?: Component) {
+    super(props, parent);
 
     this.state = {
       items: [
@@ -34,6 +34,10 @@ export class LeftPanel extends Component {
       onClick(tag);
     }
   };
+
+  componentWillUnmount(): void {
+    this.router.unsubscribe(this);
+  }
 
   render(): [string, StateType?] {
     return [

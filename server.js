@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const https = require('https');
+const fs = require('fs');
 
 const app = express();
 const PORT = 3000 || process.env.PORT;
@@ -52,6 +54,14 @@ app.get('*', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync('server.key'),
+      cert: fs.readFileSync('server.cert'),
+    },
+    app
+  )
+  .listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });

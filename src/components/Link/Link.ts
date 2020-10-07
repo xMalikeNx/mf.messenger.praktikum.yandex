@@ -5,8 +5,8 @@ import { StateType } from '../../core/types';
 export class Link extends Component {
   private _router: Router;
 
-  constructor(props: StateType) {
-    super(props);
+  constructor(props: StateType, parent?: Component) {
+    super(props, parent);
 
     this.props = {
       link: this.props.link || '/chat',
@@ -16,6 +16,10 @@ export class Link extends Component {
 
     this._router = Router.getInstance();
     this._router.subscribe(this);
+  }
+
+  componentWillUnmount(): void {
+    this._router.unsubscribe(this);
   }
 
   onChangeRoute(): void {

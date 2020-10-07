@@ -35,4 +35,16 @@ export class ChatStore extends Store {
       });
     }
   };
+
+  createChat = async (title: string): Promise<void> => {
+    try {
+      await this.api.post(`chats`, {
+        body: {
+          title,
+        },
+      });
+    } catch (err) {
+      alert('Не удалось создать чат');
+    }
+  };
 }

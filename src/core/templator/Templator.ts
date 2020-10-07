@@ -19,8 +19,12 @@ export class MNTemplator {
 
   public registry: ComponentsRegistry = new ComponentsRegistry();
 
-  compile(Module: typeof Component, props: StateType): HTMLElement {
-    const instance = new Module(props);
+  compile(
+    Module: typeof Component,
+    props: StateType,
+    parent?: Component
+  ): HTMLElement {
+    const instance = new Module(props, parent);
     const [template, localVariables] = instance.render();
     return this.compileTemplate(template, instance, localVariables);
   }

@@ -1,0 +1,38 @@
+.notification {
+  position: fixed;
+  right: 15px;
+  top: 30px;
+  background: #fff;
+  padding: 20px 15px;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-left: 3px solid #bbb;
+  width: 100%;
+  max-width: 280px;
+  animation: slideLeft 0.3s ease-in-out;
+  animation-iteration-count: 1;
+  z-index: 9999;
+
+  &--danger {
+    border-color: #ff7a7a;
+  }
+
+  &--success {
+    border-color: #6dcb81;
+  }
+
+  &--info {
+    border-color: #5db9d7;
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -5,8 +5,8 @@ import { ProfileStore } from '../../stores/profile.store';
 export class ProfileForm extends Component {
   private profileStore: ProfileStore;
 
-  constructor() {
-    super();
+  constructor(props: StateType, parent?: Component) {
+    super(props, parent);
 
     this.profileStore = ProfileStore.getInstance() as ProfileStore;
     this.profileStore.subscribe(this);

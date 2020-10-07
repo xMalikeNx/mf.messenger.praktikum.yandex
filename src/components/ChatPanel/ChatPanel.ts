@@ -7,8 +7,8 @@ import './chatPanel.scss';
 export class ChatPanel extends Component {
   private chatStore: ChatStore;
 
-  constructor(props: StateType) {
-    super(props);
+  constructor(props: StateType, parent?: Component) {
+    super(props, parent);
 
     this.chatStore = ChatStore.getInstance() as ChatStore;
     this.chatStore.subscribe(this);

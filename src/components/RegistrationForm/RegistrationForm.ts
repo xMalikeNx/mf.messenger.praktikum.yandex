@@ -5,8 +5,8 @@ import { RegistrationStore } from '../../stores/registration.store';
 export class RegistrationForm extends Component {
   registrationStore: RegistrationStore;
 
-  constructor() {
-    super();
+  constructor(props: StateType, parent?: Component) {
+    super(props, parent);
 
     this.registrationStore = RegistrationStore.getInstance() as RegistrationStore;
     this.registrationStore.subscribe(this);

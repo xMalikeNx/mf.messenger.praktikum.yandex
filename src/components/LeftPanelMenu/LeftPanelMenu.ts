@@ -7,8 +7,8 @@ import './leftPanelMenu.scss';
 export class LeftPanelMenu extends Component {
   private router: Router;
 
-  constructor() {
-    super();
+  constructor(props: StateType, parent: Component) {
+    super(props, parent);
 
     this.state = {
       links: [
@@ -20,6 +20,10 @@ export class LeftPanelMenu extends Component {
 
     this.router = Router.getInstance();
     this.router.subscribe(this);
+  }
+
+  componentWillUnmount(): void {
+    this.router.unsubscribe(this);
   }
 
   render(): [string, StateType?] {

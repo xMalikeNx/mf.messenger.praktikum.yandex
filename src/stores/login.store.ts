@@ -1,38 +1,73 @@
 import { Store } from '../core/Store';
+import { AuthApi } from '../services/auth.api';
+import { TUserDto } from '../types';
 
-export type LoginState = {
+type TFormParams = {
   login: string;
   password: string;
 };
 
-export class LoginStore extends Store {
+export type AuthState = {
+  form: TFormParams;
+  user?: {
+    id: number;
+    firstName: string;
+    secondName: string;
+    displayName: string;
+    login: string;
+    email: string;
+    phone: string;
+    avatar: string;
+  };
+};
+
+export class LoginStore extends Store<AuthState> {
+  api: AuthApi;
+
   constructor() {
     super();
-    this._displayName = 'login';
-    (this.state as LoginState) = {
-      login: '',
-      password: '',
+    this._displayName = 'auth';
+    this.state = {
+      form: {
+        login: '',
+        password: '',
+      },
     };
+    this.api = new AuthApi();
   }
 
-  onFieldChange = (e: KeyboardEvent): void => {
-    const { name, value } = e.target as HTMLInputElement;
+  setUserData = (userDto: TUserDto): void => {
     this.updateState({
-      [name]: value,
+      user: {
+        firstName: userDto.first_name,
+        secondName: userDto.second_name,
+        login: userDto.login,
+        phone: userDto.phone,
+        email: userDto.email,
+        id: userDto.id,
+        displayName: userDto.display_name,
+        avatar: userDto.avatar,
+      },
     });
   };
 
-  onFormSubmit = (): void => {
-    const errors: string[] = [];
+  onFieldChange = (e: KeyboardEvent): void => {
+    const name = (e.target as HTMLInputElement).name as keyof TFormParams;
+    const value = (e.target as HTMLInputElement).value;
 
-    if (this.state.login !== 'admin' || this.state.password !== 'hello') {
-      errors.push('Логин или пароль введены не верно');
-    }
+    this.updateState({
+      form: {
+        [name]: value,
+      },
+    });
+  };
 
-    if (!errors.length) {
-      alert('Форма успешно отправлена');
-    } else {
-      alert(errors.join('\n'));
+  onFormSubmit = async (): Promise<void> => {
+    try {
+      await this.api.signIn(this.state.form.login, this.state.form.password);
+    } catch (err) {
+      const { message } = err;
+      alert(message);
     }
   };
 }

@@ -1,9 +1,9 @@
-type ParsedType = {
+type ParsedType<T> = {
   isOk: boolean;
-  result?: any;
+  result?: T;
 };
 
-export const parseJSON = (str: string): ParsedType => {
+export const parseJSON = <T = any>(str: string): ParsedType<T> => {
   try {
     return {
       isOk: true,

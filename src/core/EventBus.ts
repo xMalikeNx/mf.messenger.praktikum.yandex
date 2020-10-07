@@ -23,6 +23,10 @@ export class EventBus {
     );
   }
 
+  public offAll(): void {
+    this.listeners = {};
+  }
+
   public emit(event: string, ...props: unknown[]): void {
     if (typeof this.listeners[event] === 'undefined') {
       console.error(`Event ${event} not exists`);

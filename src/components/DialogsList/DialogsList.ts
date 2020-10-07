@@ -11,8 +11,8 @@ import './dialogsList.scss';
 export class DialogsList extends Component {
   dialogsStore: DialogsListStore;
 
-  constructor() {
-    super();
+  constructor(props: StateType, parent?: Component) {
+    super(props, parent);
     this.dialogsStore = DialogsListStore.getInstance() as DialogsListStore;
     this.dialogsStore.subscribe(this);
   }

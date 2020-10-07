@@ -1,10 +1,15 @@
+import { DeepPartial } from '../types';
 import { EventBus } from './EventBus';
 import { MNTemplator } from './templator/Templator';
-import { StateType } from './types';
 
 const templator = MNTemplator.getInstance();
 
-export class Component {
+type TChildren = Array<Component | null>;
+
+export class Component<
+  State = Record<string, unknown>,
+  Props = Record<string, unknown>
+> {
   static readonly EVENTS = {
     INIT: 'init',
     CDM: 'componentDidMount',
@@ -12,14 +17,20 @@ export class Component {
     RENDER: 'render',
   };
 
-  protected _props: StateType = {};
-  protected _state: StateType = {};
+  protected _props: Props = {} as Props;
+  protected _state: State = {} as State;
   private _eventBus: EventBus;
   private _element: HTMLElement | null = null;
+  private _parent: Component | null = null;
+  private _children: TChildren = [];
 
-  constructor(props: StateType = {}) {
+  constructor(props: Props = {} as Props, parent: Component | null = null) {
     this._eventBus = new EventBus();
     this._initEvents();
+    this._parent = parent;
+    if (parent !== null) {
+      parent.children.push(this as any);
+    }
     this.props = props;
     // Действия в конструкторе наследника не успевают выполниться перед тем как происходит cdm
     // таким образом эта проблема якобы решается
@@ -33,19 +44,35 @@ export class Component {
     this.eventBus.on(Component.EVENTS.RENDER, this._render.bind(this));
   }
 
-  setState(newState: StateType): void {
+  setState(newState: DeepPartial<State>): void {
     this.state = Object.assign(this.state, newState);
   }
 
-  setProps(newProps: StateType): void {
+  setProps(newProps: DeepPartial<Props>): void {
     this.props = Object.assign(this.props, newProps);
   }
 
-  get state(): StateType {
+  public get parent(): Component | null {
+    return this._parent;
+  }
+
+  public set parent(value: Component | null) {
+    this._parent = value;
+  }
+
+  public get children(): TChildren {
+    return this._children;
+  }
+
+  public set children(value: TChildren) {
+    this._children = value;
+  }
+
+  get state(): State {
     return this._state;
   }
 
-  set state(value: StateType) {
+  set state(value: State) {
     const prevState = { ...this.state };
     const prevProps = { ...this.props };
 
@@ -53,7 +80,7 @@ export class Component {
     this.eventBus.emit(Component.EVENTS.CDU, prevProps, prevState);
   }
 
-  set props(value: StateType) {
+  set props(value: Props) {
     const prevState = { ...this.state };
     const prevProps = { ...this.props };
 
@@ -61,7 +88,7 @@ export class Component {
     this.eventBus.emit(Component.EVENTS.CDU, prevProps, prevState);
   }
 
-  get props(): StateType {
+  get props(): Props {
     return this._props;
   }
 
@@ -87,7 +114,7 @@ export class Component {
     this.componentDidMount();
   }
 
-  private _componentDidUpdate(prevProps: StateType, prevState: StateType) {
+  private _componentDidUpdate(prevProps: Props, prevState: State) {
     const shouldRender = this.componentDidUpdate(prevProps, prevState);
 
     if (shouldRender) {
@@ -98,7 +125,11 @@ export class Component {
   protected _render(): void {
     if (this.element) {
       const [template, localVariables] = this.render();
-      const el = templator.compileTemplate(template, this, localVariables);
+      const el = templator.compileTemplate(
+        template,
+        this as any,
+        localVariables
+      );
       this.element.replaceWith(el);
       this.element = el;
     }
@@ -108,11 +139,14 @@ export class Component {
   componentDidMount(): void {}
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  componentDidUpdate(_prevProps: StateType, _prevState: StateType): boolean {
+  componentDidUpdate(_prevProps: Props, _prevState: State): boolean {
     return true;
   }
 
-  render(): [string, StateType?] {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  componentWillUnmount(): void {}
+
+  render(): [string, Record<string, unknown>?] {
     return [''];
   }
 }

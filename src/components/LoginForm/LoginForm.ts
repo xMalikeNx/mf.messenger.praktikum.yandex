@@ -1,15 +1,37 @@
 import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
-import { LoginStore } from '../../stores/login.store';
+import { AuthStore } from '../../stores/auth.store';
 
-export class LoginForm extends Component {
-  private loginStore: LoginStore;
+type TLoginForm = {
+  login: string;
+  password: string;
+};
 
-  constructor() {
-    super();
-    this.loginStore = LoginStore.getInstance() as LoginStore;
-    this.loginStore.subscribe(this);
+export class LoginForm extends Component<TLoginForm> {
+  private authStore: AuthStore;
+
+  constructor(props: StateType, parent?: Component) {
+    super(props, parent);
+    this.state = {
+      login: '',
+      password: '',
+    };
+    this.authStore = AuthStore.getInstance() as AuthStore;
+    this.authStore.subscribe(this);
   }
+
+  onChange = (e: KeyboardEvent): void => {
+    const name = (e.target as HTMLInputElement).name as keyof TLoginForm;
+    const value = (e.target as HTMLInputElement).value;
+    console.log(name);
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  onSubmit = (): void => {
+    this.authStore.signIn(this.state.login, this.state.password);
+  };
 
   render(): [string, StateType?] {
     return [
@@ -20,16 +42,16 @@ export class LoginForm extends Component {
           <InputField
             name="login"
             id="login"
-            value="{{props.login.login}}"
+            value="{{state.login}}"
             type="text"
             title="Логин"
-            onFieldChange={{onFieldChange}}
+            onFieldChange={{onChange}}
           />
           <InputField
             name="password"
             id="password"
-            value="{{props.login.password}}"
-            onFieldChange={{onFieldChange}}
+            value="{{state.password}}"
+            onFieldChange={{onChange}}
             type="password"
             title="Пароль"
           />
@@ -44,8 +66,8 @@ export class LoginForm extends Component {
       </div>
       `,
       {
-        onSubmit: this.loginStore.onFormSubmit,
-        onFieldChange: this.loginStore.onFieldChange,
+        onChange: this.onChange,
+        onSubmit: this.onSubmit,
       },
     ];
   }
