@@ -5,7 +5,7 @@ const https = require('https');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, './dist')));
@@ -54,14 +54,16 @@ app.get('*', (req, res) => {
   }
 });
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync(path.resolve(__dirname, './security/key.pem')),
-      cert: fs.readFileSync(path.resolve(__dirname, './security/cert.pem')),
-    },
-    app
-  )
-  .listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-  });
+const server = process.env.PORT
+  ? app
+  : https.createServer(
+      {
+        key: fs.readFileSync(path.resolve(__dirname, './security/key.pem')),
+        cert: fs.readFileSync(path.resolve(__dirname, './security/cert.pem')),
+      },
+      app
+    );
+
+server.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});

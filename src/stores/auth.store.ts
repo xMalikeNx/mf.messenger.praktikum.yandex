@@ -80,11 +80,11 @@ export class AuthStore extends Store<TAuthStore> {
           ...userInfo,
           avatar: userInfo.avatar
             ? 'https://ya-praktikum.tech' + userInfo.avatar
-            : null,
+            : userInfo.avatar,
         },
         isLoggedIn: true,
       });
-      (ProfileStore.getInstance() as ProfileStore).setUserInfo(userInfo);
+      (ProfileStore.getInstance() as ProfileStore).setUserInfo(this.state.user as TUserInfo);
     } catch (err) {
       (UiStore.getInstance() as UiStore).showNotification(
         'Не удалось получить данные о пользователе',
