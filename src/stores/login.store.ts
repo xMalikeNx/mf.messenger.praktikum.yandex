@@ -1,6 +1,6 @@
 import { Store } from '../core/Store';
 import { AuthApi } from '../services/auth.api';
-import { TUserDto } from '../types';
+import { TUserDto, TUserInfo } from '../types';
 
 type TFormParams = {
   login: string;
@@ -9,16 +9,7 @@ type TFormParams = {
 
 export type AuthState = {
   form: TFormParams;
-  user?: {
-    id: number;
-    firstName: string;
-    secondName: string;
-    displayName: string;
-    login: string;
-    email: string;
-    phone: string;
-    avatar: string;
-  };
+  user?: TUserInfo;
 };
 
 export class LoginStore extends Store<AuthState> {

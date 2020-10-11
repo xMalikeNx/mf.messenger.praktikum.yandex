@@ -1,3 +1,4 @@
+import { TRegistrationForm } from '../components/RegistrationForm/RegistrationForm';
 import { parseJSON } from '../core/Request/utils';
 import { TUserDto, TUserInfo } from '../types';
 import { Api } from '../utils/Api';
@@ -16,16 +17,25 @@ export class AuthApi extends Api {
     return this.post('auth/logout');
   }
 
-  signUp(userData: TUserInfo): Promise<XMLHttpRequest> {
+  signUp(userData: TRegistrationForm): Promise<XMLHttpRequest> {
     return this.post('auth/signup', {
       body: {
-        ...userData,
+        first_name: userData.firstName,
+        second_name: userData.secondName,
+        login: userData.login,
+        password: userData.password,
+        email: userData.email,
+        phone: userData.phone,
       },
     });
   }
 
+  logOut(): Promise<XMLHttpRequest> {
+    return this.post('auth/logout');
+  }
+
   async getUserInfo(): Promise<TUserInfo> {
-    const res = await (await this.get('auth/user')).responseText;
+    const res = (await this.get('auth/user')).responseText;
     const { isOk, result } = parseJSON<TUserDto>(res);
     if (!isOk || !result) {
       throw new Error('JSON is not valid!');

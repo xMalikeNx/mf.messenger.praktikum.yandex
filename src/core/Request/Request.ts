@@ -1,3 +1,5 @@
+import { parseJSON } from './utils';
+
 type HTTP_METHODS = 'GET' | 'POST' | 'DELETE' | 'PUT';
 
 export type RequestBodyType = {
@@ -6,6 +8,8 @@ export type RequestBodyType = {
 
 export type RequestPropertiesType = {
   method: HTTP_METHODS;
+  contentType?: string;
+  body?: Record<string, any>;
 } & RequestBodyType;
 
 export class MNRequest {
@@ -20,7 +24,9 @@ export class MNRequest {
 
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
-      xhr.setRequestHeader('Content-Type', 'application/json');
+      if (!properties.contentType) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
       xhr.withCredentials = true;
 
       const onRequestFailed = () => {
@@ -31,8 +37,11 @@ export class MNRequest {
       const onRequestSuccess = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
           if (xhr.status >= 400) {
-            const responseData = JSON.parse(xhr.responseText);
-            reject({ code: xhr.status, message: responseData.reason });
+            const response = parseJSON(xhr.responseText);
+            if (!response.isOk) {
+              return reject({ code: xhr.status, message: xhr.responseText });
+            }
+            reject({ code: xhr.status, message: response.result.reason });
           }
           resolve(xhr);
         }
@@ -43,7 +52,17 @@ export class MNRequest {
       xhr.ontimeout = onRequestFailed;
       xhr.onreadystatechange = onRequestSuccess;
 
-      xhr.send(properties.body ? JSON.stringify(properties.body) : '');
+      if (properties.contentType && properties.body) {
+        const formData = new FormData();
+
+        Object.keys(properties.body).forEach((key) => {
+          formData.append(key, (properties.body as any)[key]);
+        });
+
+        xhr.send(formData);
+      } else {
+        xhr.send(JSON.stringify(properties.body));
+      }
     });
   }
 }

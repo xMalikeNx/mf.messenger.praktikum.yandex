@@ -11,6 +11,26 @@ export function initComponents(): void {
     'Notification',
     Components.Notification as typeof Component
   );
+  templator.registry.register(
+    'CreateChatForm',
+    Components.CreateChatForm as typeof Component
+  );
+  templator.registry.register(
+    'ChatDropdown',
+    Components.ChatDropdown as typeof Component
+  );
+  templator.registry.register(
+    'ChatUsersListModal',
+    Components.ChatUsersListModal as typeof Component
+  );
+  templator.registry.register(
+    'UsersListModal',
+    Components.UsersListModal as typeof Component
+  );
+  templator.registry.register(
+    'UserListItem',
+    Components.UserListItem as typeof Component
+  );
   templator.registry.register('Button', Components.Button as typeof Component);
   templator.registry.register('Link', Components.Link as typeof Component);
   templator.registry.register(

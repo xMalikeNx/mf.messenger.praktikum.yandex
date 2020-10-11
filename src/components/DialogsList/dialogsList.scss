@@ -10,7 +10,7 @@
 }
 .dialogs__list {
   height: 100%;
-  padding-bottom: 45px;
+  padding-bottom: 75px;
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -92,6 +92,14 @@
 .bars-button__icon {
   font-size: 20px;
 }
+.create-chat {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  left: 0;
+}
+
 @media screen and (max-width: 991px) {
   .dialogs-panel {
     display: none;

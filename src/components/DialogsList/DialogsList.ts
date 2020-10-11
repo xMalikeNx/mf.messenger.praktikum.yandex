@@ -1,20 +1,33 @@
 import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
-import {
-  DialogItemType,
-  DialogsListStore,
-  DialogsState,
-} from '../../stores/dialogs.store';
+import { DialogsListStore, TDialogsState } from '../../stores/dialogs.store';
+import { UiStore } from '../../stores/ui.store';
+import { validate } from '../../utils/validate';
 
 import './dialogsList.scss';
 
-export class DialogsList extends Component {
+type TDialogListProps = {
+  dialogs: TDialogsState;
+};
+
+export class DialogsList extends Component<any, TDialogListProps> {
   dialogsStore: DialogsListStore;
 
-  constructor(props: StateType, parent?: Component) {
+  constructor(props: TDialogListProps, parent?: Component) {
     super(props, parent);
     this.dialogsStore = DialogsListStore.getInstance() as DialogsListStore;
     this.dialogsStore.subscribe(this);
+  }
+
+  componentDidMount(): void {
+    const { dialogs } = this.props;
+    if (!dialogs.loaded) {
+      this.dialogsStore.fetchDialogs();
+    }
+  }
+
+  componentWillUnmount(): void {
+    this.dialogsStore.unsubscribe(this);
   }
 
   onSelectDialog = (dialogId: number): void => {
@@ -22,21 +35,23 @@ export class DialogsList extends Component {
   };
 
   onSearchInputChange = (e: KeyboardEvent): void => {
-    this.dialogsStore.changeSearch((e.target as HTMLInputElement).value);
+    const value = (e.target as HTMLInputElement).value;
+    if (!validate(value)) {
+      (UiStore.getInstance() as UiStore).showNotification(
+        'Поле поиска содержит недопустимые символы',
+        'danger'
+      );
+      return;
+    }
+    this.dialogsStore.changeSearch(value);
   };
 
   render(): [string, StateType?] {
-    const dialogs = (this.props.dialogs as any).items as DialogItemType[];
-    const searchedDialogs = dialogs.filter(
-      (dialog) =>
-        dialog.lastMessage
-          .toLowerCase()
-          .indexOf((this.props.dialogs as DialogsState).search.toLowerCase()) >=
-          0 ||
-        dialog.userName
-          .toLowerCase()
-          .indexOf((this.props.dialogs as DialogsState).search.toLowerCase()) >=
-          0
+    const dialogs = this.props.dialogs.items;
+    const searchedDialogs = dialogs.filter((dialog) =>
+      dialog.title
+        .toLowerCase()
+        .includes(this.props.dialogs.search.toLowerCase())
     );
 
     return [
@@ -55,24 +70,26 @@ export class DialogsList extends Component {
           {% if !props.dialogs.items.length && props.dialogs.loading %}
               <LoadingIndicator />
           {% endif %}
-          {% if props.dialogs.items.length %}
+          {% if props.dialogs.items && !props.dialogs.loading %}
               {% for dialog in dialogs %}
                   <DialogListItem
                     {% if props.dialogs.selectedDialogId === dialog.id %}
                       selected={{true}}
                     {% endif %}
                     id={{dialog.id}}
-                    userName={{dialog.userName}}
-                    time={{dialog.time}}
-                    isMy={{dialog.isMy}}
-                    lastMessage={{dialog.lastMessage}}
-                    background={{dialog.background}}
+                    title={{dialog.title}}
+                    avatar={{dialog.avatar}}
                     onClick={{onSelectDialog}}
-                    unreadCount={{dialog.unreadCount}}
                   />
               {% endfor %}
           {% endif %}
           </ul>
+          {% if !props.dialogs.items.length %}
+            <div class="text-center">
+              Список пуст
+            </div>
+          {% endif %}
+          <CreateChatForm />
       </aside>
       `,
       {

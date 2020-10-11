@@ -15,7 +15,7 @@ export type TUserDto = {
 };
 
 export type TUserInfo = {
-  id: number;
+  id?: number;
   firstName: string;
   secondName: string;
   displayName: string | null;

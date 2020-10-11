@@ -3,24 +3,41 @@ import { StateType } from '../../core/types';
 import { ChatStore } from '../../stores/chat.store';
 
 import './chatPanel.scss';
+import attachUrl from './attach.svg';
+import sendUrl from './send.svg';
+import { DialogsListStore, TDialogsState } from '../../stores/dialogs.store';
+import { getFirstLitera } from '../../utils/getFirstLitera';
 
-export class ChatPanel extends Component {
+type TChatPanelProps = {
+  dialogs: TDialogsState;
+};
+
+export class ChatPanel extends Component<any, TChatPanelProps> {
   private chatStore: ChatStore;
+  private dialogsStore: DialogsListStore;
 
-  constructor(props: StateType, parent?: Component) {
+  constructor(props: TChatPanelProps, parent?: Component) {
     super(props, parent);
 
     this.chatStore = ChatStore.getInstance() as ChatStore;
     this.chatStore.subscribe(this);
+    this.dialogsStore = DialogsListStore.getInstance() as DialogsListStore;
+    this.dialogsStore.subscribe(this);
   }
 
-  componentDidMount(): void {
-    this.chatStore.fetchMessagesFromDialog(
-      parseInt(this.props.selectedChatId as string)
-    );
+  componentWillUnmount(): void {
+    this.chatStore.unsubscribe(this);
+    this.dialogsStore.unsubscribe(this);
   }
 
   render(): [string, StateType?] {
+    const { dialogs } = this.props;
+    const selectedChat =
+      dialogs.items.find((chat) => chat.id === dialogs.selectedDialogId) ||
+      dialogs.items[0];
+
+    const firstLitera = getFirstLitera(selectedChat.title);
+
     return [
       `
       <main class="chat-panel">
@@ -28,32 +45,23 @@ export class ChatPanel extends Component {
           <button class="back-button">
               <img
               class="back-button__icon"
-              src="/img/icons/back.svg"
+              src="{{dotsUrl}}"
               alt="back"
               />
           </button>
           <div class="top-bar-info">
               <div class="avatar">
-              М
+                {{firstLitera}}
               </div>
               <div class="top-bar-info__data">
               <div class="top-bar-info__username">
-                  Мур
+                  {{selectedChat.title}}
               </div>
-              <time class="top-bar-info__lastvisit">
-                  был в сети 20 минут назад
-              </time>
               </div>
           </div>
-          <div class="settings-wrap">
-              <div class="dots-icon">
-              <img
-                  class="dots-icon__img"
-                  src="/img/icons/dots.svg"
-                  alt="dots"
-              />
-              </div>
-          </div>
+          
+          <ChatDropdown />
+
           </header>
           <div class="chat">
           {% if props.chat.loading %}
@@ -73,7 +81,7 @@ export class ChatPanel extends Component {
           </div>
           <footer class="message-bar">
           <div class="message-bar__attach">
-              <img src="/img/icons/attach.svg" alt="attach" />
+              <img src={{attachUrl}} alt="attach" />
           </div>
           <div class="message-bar__input-wrap">
               <input
@@ -82,12 +90,13 @@ export class ChatPanel extends Component {
               type="text"
               />
               <div class="message-bar__send">
-              <img src="/img/icons/send.svg" alt="send" />
+              <img src={{sendUrl}} alt="send" />
               </div>
           </div>
           </footer>
       </main>
       `,
+      { attachUrl, sendUrl, selectedChat, firstLitera },
     ];
   }
 }

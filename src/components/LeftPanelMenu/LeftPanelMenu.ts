@@ -1,6 +1,7 @@
 import { Component } from '../../core/Component';
 import { Router } from '../../core/Router/Router';
 import { StateType } from '../../core/types';
+import { AuthStore } from '../../stores/auth.store';
 
 import './leftPanelMenu.scss';
 
@@ -43,9 +44,11 @@ export class LeftPanelMenu extends Component {
               {% endif %}
             />
           {% endfor %}
+          <button class="left-panel-menu-list__item" onClick={{logOut}}>Выйти</button>
         </nav>
       </div>
       `,
+      { logOut: (AuthStore.getInstance() as AuthStore).logOut },
     ];
   }
 }

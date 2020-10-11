@@ -2,11 +2,19 @@ import { Store } from '../core/Store';
 
 type TNotificationType = 'default' | 'success' | 'danger' | 'info';
 
-type TUiStore = {
+export type TUiStore = {
   notification: {
     opened: boolean;
     message: string;
     type?: TNotificationType;
+  };
+  modals: {
+    chatUsersList: {
+      opened: boolean;
+    };
+    inviteUsersList: {
+      opened: boolean;
+    };
   };
 };
 
@@ -22,8 +30,60 @@ export class UiStore extends Store<TUiStore> {
         message: 'test',
         type: 'default',
       },
+      modals: {
+        chatUsersList: {
+          opened: false,
+        },
+        inviteUsersList: {
+          opened: false,
+        },
+      },
     };
   }
+
+  public showChatUsersListModal = (): void => {
+    this.updateState({
+      modals: {
+        ...this.state.modals,
+        chatUsersList: {
+          opened: true,
+        },
+      },
+    });
+  };
+
+  public closeChatUsersListModal = (): void => {
+    this.updateState({
+      modals: {
+        ...this.state.modals,
+        chatUsersList: {
+          opened: false,
+        },
+      },
+    });
+  };
+
+  public showInviteUsersListModal = (): void => {
+    this.updateState({
+      modals: {
+        ...this.state.modals,
+        inviteUsersList: {
+          opened: true,
+        },
+      },
+    });
+  };
+
+  public closeInviteUsersListModal = (): void => {
+    this.updateState({
+      modals: {
+        ...this.state.modals,
+        inviteUsersList: {
+          opened: false,
+        },
+      },
+    });
+  };
 
   public showNotification(
     message: string,

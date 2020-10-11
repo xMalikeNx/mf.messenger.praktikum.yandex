@@ -33,6 +33,6 @@ export class EventBus {
       return;
     }
 
-    this.listeners[event].forEach((listener) => listener(props));
+    this.listeners[event].forEach((listener) => listener(...props));
   }
 }

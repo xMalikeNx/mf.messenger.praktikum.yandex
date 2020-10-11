@@ -13,18 +13,6 @@ export class Button extends Component {
     };
   }
 
-  handleClick(): void {
-    this.setState({
-      name: !this.state.name,
-    });
-  }
-
-  timeout(): void {
-    this.setState({
-      loading: false,
-    });
-  }
-
   render(): [string, StateType?] {
     return [
       `

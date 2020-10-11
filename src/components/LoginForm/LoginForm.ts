@@ -1,6 +1,8 @@
 import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
 import { AuthStore } from '../../stores/auth.store';
+import { UiStore } from '../../stores/ui.store';
+import { validate } from '../../utils/validate';
 
 type TLoginForm = {
   login: string;
@@ -23,13 +25,28 @@ export class LoginForm extends Component<TLoginForm> {
   onChange = (e: KeyboardEvent): void => {
     const name = (e.target as HTMLInputElement).name as keyof TLoginForm;
     const value = (e.target as HTMLInputElement).value;
-    console.log(name);
     this.setState({
       [name]: value,
     });
   };
 
   onSubmit = (): void => {
+    if (!validate(this.state.login)) {
+      (UiStore.getInstance() as UiStore).showNotification(
+        'Логин содержит недопустимые символы',
+        'danger'
+      );
+      return;
+    }
+
+    if (!validate(this.state.login)) {
+      (UiStore.getInstance() as UiStore).showNotification(
+        'Пароль содержит недопустимые символы',
+        'danger'
+      );
+      return;
+    }
+
     this.authStore.signIn(this.state.login, this.state.password);
   };
 

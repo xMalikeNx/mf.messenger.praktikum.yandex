@@ -1,6 +1,10 @@
 import { Component } from '../Component';
 import { EventBus } from '../EventBus';
 
+export type TRouter = {
+  pathname: string;
+};
+
 export class Router {
   private static readonly ROUTER_EVENTS = {
     CR: 'changeRoute',

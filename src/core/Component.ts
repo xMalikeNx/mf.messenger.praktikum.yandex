@@ -1,4 +1,5 @@
 import { DeepPartial } from '../types';
+import { deepClone } from '../utils/deepClone';
 import { EventBus } from './EventBus';
 import { MNTemplator } from './templator/Templator';
 
@@ -7,8 +8,8 @@ const templator = MNTemplator.getInstance();
 type TChildren = Array<Component | null>;
 
 export class Component<
-  State = Record<string, unknown>,
-  Props = Record<string, unknown>
+  State = Record<string, any>,
+  Props = Record<string, any>
 > {
   static readonly EVENTS = {
     INIT: 'init',
@@ -44,11 +45,11 @@ export class Component<
     this.eventBus.on(Component.EVENTS.RENDER, this._render.bind(this));
   }
 
-  setState(newState: DeepPartial<State>): void {
+  setState(newState: DeepPartial<State> | State): void {
     this.state = Object.assign(this.state, newState);
   }
 
-  setProps(newProps: DeepPartial<Props>): void {
+  setProps(newProps: DeepPartial<Props> | Props): void {
     this.props = Object.assign(this.props, newProps);
   }
 
@@ -73,16 +74,16 @@ export class Component<
   }
 
   set state(value: State) {
-    const prevState = { ...this.state };
-    const prevProps = { ...this.props };
+    const prevState = deepClone<State>(this.state);
+    const prevProps = deepClone<Props>(this.props);
 
     this._state = Object.assign(this.state, value);
     this.eventBus.emit(Component.EVENTS.CDU, prevProps, prevState);
   }
 
   set props(value: Props) {
-    const prevState = { ...this.state };
-    const prevProps = { ...this.props };
+    const prevState = deepClone<State>(this.state);
+    const prevProps = deepClone<Props>(this.props);
 
     this._props = Object.assign(this.props, value);
     this.eventBus.emit(Component.EVENTS.CDU, prevProps, prevState);

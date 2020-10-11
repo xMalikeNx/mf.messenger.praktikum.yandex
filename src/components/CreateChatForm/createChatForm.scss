@@ -1,0 +1,29 @@
+.create-chat-form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  &-field {
+    position: relative;
+    z-index: 999;
+    background: #fcfcfc;
+    padding: 15px;
+    width: 100%;
+  }
+}
+
+.create-chat-button {
+  width: 100%;
+  padding: 13px 15px;
+  background: #383838;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1000;
+  transition: 0.3s background ease;
+  &:hover {
+    background: lighten($color: #383838, $amount: 5%);
+  }
+}

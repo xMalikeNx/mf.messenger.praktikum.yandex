@@ -15,3 +15,8 @@ export { LoginForm } from './LoginForm';
 export { RegistrationForm } from './RegistrationForm/index';
 export { Avatar } from './Avatar';
 export { Notification } from './Notification';
+export { CreateChatForm } from './CreateChatForm';
+export { ChatDropdown } from './ChatDropdown';
+export { ChatUsersListModal } from './ChatUsersListModal';
+export { UsersListModal } from './UsersListModal';
+export { UserListItem } from './UserListItem';

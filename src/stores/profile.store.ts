@@ -1,61 +1,99 @@
 import { Store } from '../core/Store';
-import { validate } from '../utils/validate';
+import { ProfileApi } from '../services/profile.api';
+import { TUserDto, TUserInfo } from '../types';
+import { AuthStore } from './auth.store';
+import { UiStore } from './ui.store';
 
-export type ProfileState = {
-  login: string;
-  email: string;
+export type TProfileState = Omit<TUserInfo, 'id'> & {
   password: string;
   newPassword: string;
   rePassword: string;
 };
 
-export class ProfileStore extends Store {
+export class ProfileStore extends Store<TProfileState> {
+  api: ProfileApi;
+
   constructor() {
     super();
     this._displayName = 'profile';
-    (this.state as ProfileState) = {
-      login: 'Maliken',
-      email: 'maliken.webdev@gmail.com',
+    this.state = {
+      firstName: '',
+      secondName: '',
+      login: '',
+      email: '',
+      phone: '',
       password: '',
       newPassword: '',
       rePassword: '',
+      displayName: '',
+      avatar: '',
     };
+    this.api = new ProfileApi();
   }
 
-  onFieldChange = (e: KeyboardEvent): void => {
-    const { name, value } = e.target as HTMLInputElement;
+  onChange = (e: KeyboardEvent): void => {
+    const name = (e.target as HTMLInputElement).name as keyof TProfileState;
+    const value = (e.target as HTMLInputElement).value;
+
     this.updateState({
       [name]: value,
     });
   };
 
-  onFormSubmit = (): void => {
-    const errors: string[] = [];
+  updateUser = async (): Promise<void> => {
+    try {
+      const { state } = this;
+      const userInfo: Partial<TUserDto> = {
+        display_name: state.displayName,
+        first_name: state.firstName,
+        second_name: state.secondName,
+        login: state.login,
+        phone: state.phone,
+        email: state.email,
+      };
 
-    if (!validate(this.state.login as string)) {
-      errors.push('Логин введен не верно');
-    }
-
-    if (!validate(this.state.email as string, 'email')) {
-      errors.push('Email введен не верно');
-    }
-
-    if ((this.state.password as string).length) {
-      if ((this.state.password as string) !== 'hi') {
-        errors.push('Старый пароль введен не верно');
+      if (state.password) {
+        if (state.newPassword !== state.rePassword) {
+          (UiStore.getInstance() as UiStore).showNotification(
+            'Не удалось обновить профиль пользователя',
+            'danger'
+          );
+          return;
+        }
+        userInfo.password = state.newPassword;
       }
 
-      if (
-        (this.state.newPassword as string) !== (this.state.rePassword as string)
-      ) {
-        errors.push('Введенные пароли не совпадают');
-      }
+      await this.api.updateUser(userInfo);
+      (AuthStore.getInstance() as AuthStore).getUserInfo();
+      (UiStore.getInstance() as UiStore).showNotification(
+        'Профиль пользователя успешно обновлен',
+        'success'
+      );
+    } catch (err) {
+      (UiStore.getInstance() as UiStore).showNotification(
+        'Не удалось обновить профиль пользователя',
+        'danger'
+      );
+    }
+  };
+
+  changeAvatar = async (files: FileList): Promise<void> => {
+    if (!files.length) {
+      return;
     }
 
-    if (!errors.length) {
-      alert('Форма успешно отправлена');
-    } else {
-      alert(errors.join('\n'));
+    try {
+      await this.api.updateAvatar(files[0]);
+      (AuthStore.getInstance() as AuthStore).getUserInfo();
+    } catch (err) {
+      (UiStore.getInstance() as UiStore).showNotification(
+        `Не удалось обновить аватар: ${err.message}`,
+        'danger'
+      );
     }
+  };
+
+  setUserInfo = (userInfo: TUserInfo): void => {
+    this.updateState({ ...this.state, ...userInfo });
   };
 }

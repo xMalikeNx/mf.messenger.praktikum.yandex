@@ -57,8 +57,8 @@ app.get('*', (req, res) => {
 https
   .createServer(
     {
-      key: fs.readFileSync('server.key'),
-      cert: fs.readFileSync('server.cert'),
+      key: fs.readFileSync(path.resolve(__dirname, './security/key.pem')),
+      cert: fs.readFileSync(path.resolve(__dirname, './security/cert.pem')),
     },
     app
   )

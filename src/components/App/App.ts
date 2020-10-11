@@ -1,11 +1,16 @@
 import { Component } from '../../core/Component';
-import { Router } from '../../core/Router/Router';
+import { Router, TRouter } from '../../core/Router/Router';
 import { StateType } from '../../core/types';
-import { AuthStore } from '../../stores/auth.store';
+import { AuthStore, TAuthStore } from '../../stores/auth.store';
 import { DialogsListStore } from '../../stores/dialogs.store';
 import { UiStore } from '../../stores/ui.store';
 
-export class App extends Component {
+type TAppProps = {
+  auth: TAuthStore;
+  router: TRouter;
+};
+
+export class App extends Component<any, TAppProps> {
   dialogsStore: DialogsListStore;
   uiStore: UiStore;
   authStore: AuthStore;
@@ -19,7 +24,7 @@ export class App extends Component {
     '/registration',
   ];
 
-  constructor(props: StateType, parent?: Component) {
+  constructor(props: TAppProps, parent?: Component) {
     super(props, parent);
     this.router = Router.getInstance();
     this.router.subscribe(this);
@@ -38,38 +43,55 @@ export class App extends Component {
 
   componentDidMount(): void {
     document.title = 'MNMessager';
-    this.authStore.getUserInfo();
+    this.initAuth();
+  }
+
+  async initAuth(): Promise<void> {
+    await this.authStore.getUserInfo();
+    if (
+      !this.props.auth.isLoggedIn &&
+      this.props.router.pathname !== '/registration'
+    ) {
+      this.router.go('/login');
+    }
   }
 
   componentWillUnmount(): void {
-    this.dialogsStore.unsubscribe(this);
     this.uiStore.unsubscribe(this);
+    this.authStore.unsubscribe(this);
     this.router.unsubscribe(this);
   }
 
   render(): [string, StateType?] {
-    console.log(this.props.auth);
-    const { pathname } = this._props?.router as StateType;
+    const { pathname } = this.props.router;
     return [
       `
       <div class="app">
           {% if props.ui.notification.opened %}
             <Notification />
           {% endif %}
-          {% if pathname === "/chat" || pathname === "/profile" || pathname === "/menu" %}
-            <LeftPanel />
-          {% if pathname === "/profile" %}
-              <Profile />
-          {% elif pathname === "/chat" || pathname === "/menu" %}
-            <DialogsList />
-            {% if props.dialogs.selectedDialogId === null %}
-              <div class="chat-panel chat-panel--empty">
-                Выберите чат чтобы отправить сообщение
-              </div>
-            {% else %}
-              <ChatPanel selectedChatId={{props.dialogs.selectedDialogId}} />
-            {% endif %}
+          {% if props.ui.modals.chatUsersList.opened %}
+            <ChatUsersListModal />
           {% endif %}
+          {% if props.ui.modals.inviteUsersList.opened %}
+            <UsersListModal />
+          {% endif %}
+          {% if props.auth.isLoggedIn %}
+            {% if pathname === "/chat" || pathname === "/profile" || pathname === "/menu" %}
+              <LeftPanel />
+            {% if pathname === "/profile" %}
+                <Profile />
+            {% elif pathname === "/chat" || pathname === "/menu" %}
+              <DialogsList />
+              {% if props.dialogs.selectedDialogId === null %}
+                <div class="chat-panel chat-panel--empty">
+                  Выберите чат чтобы отправить сообщение
+                </div>
+              {% else %}
+                <ChatPanel selectedChatId={{props.dialogs.selectedDialogId}} />
+              {% endif %}
+            {% endif %}
+          {% endif %}  
         {% endif %}
         {% if pathname === "/login" %}
             <Login />

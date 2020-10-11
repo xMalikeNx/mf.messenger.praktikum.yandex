@@ -18,7 +18,6 @@ export class Notification extends Component {
   }
 
   render(): [string] {
-    console.log(this.props);
     return [
       `
       <div 

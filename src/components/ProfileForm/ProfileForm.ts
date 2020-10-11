@@ -1,16 +1,29 @@
 import { Component } from '../../core/Component';
 import { StateType } from '../../core/types';
-import { ProfileStore } from '../../stores/profile.store';
+import { ProfileStore, TProfileState } from '../../stores/profile.store';
 
-export class ProfileForm extends Component {
+type TProfileFormProps = {
+  profile: TProfileState;
+};
+
+export class ProfileForm extends Component<any, TProfileFormProps> {
   private profileStore: ProfileStore;
 
-  constructor(props: StateType, parent?: Component) {
+  constructor(props: TProfileFormProps, parent?: Component) {
     super(props, parent);
 
     this.profileStore = ProfileStore.getInstance() as ProfileStore;
     this.profileStore.subscribe(this);
   }
+
+  onChangeAvatar = (e: MouseEvent): void => {
+    const target = e.target as HTMLInputElement;
+    if (!target.files?.length) {
+      return;
+    }
+
+    this.profileStore.changeAvatar(target.files);
+  };
 
   render(): [string, StateType?] {
     return [
@@ -18,15 +31,41 @@ export class ProfileForm extends Component {
       <div>
         <h2 class="content-view__title">Редактирование профиля</h2>
         <div class="content-view__user">
-          <div class="avatar content-view__avatar">
-            M
-          </div>
+          <Avatar title="M" url={{props.profile.avatar}} className="content-view__avatar" />
           <div class="content-view__user-info">
             <div class="content-view__user-name">{{props.profile.login}}</div>
             <div class="content-view__user-email">{{props.profile.email}}</div>
           </div>
         </div>
         <div class="form">
+          <div class="input-block">
+            <label class="input-block__label" for="avatar">Аватар</label>
+            <input type="file" id="avatar" onChange={{onChangeAvatar}} accept="image/jpeg,image/png" />
+          </div>
+          <InputField
+            value="{{props.profile.firstName}}"
+            name="firstName"
+            id="firstName"
+            type="text"
+            title="Имя"
+            onFieldChange={{onFieldChange}}
+          />
+          <InputField
+            value="{{props.profile.secondName}}"
+            name="secondName"
+            id="secondName"
+            type="text"
+            title="Фамилия"
+            onFieldChange={{onFieldChange}}
+          />
+          <InputField
+            value="{{props.profile.email}}"
+            name="email"
+            id="email"
+            type="email"
+            title="Email"
+            onFieldChange={{onFieldChange}}
+          />
           <InputField
             value="{{props.profile.login}}"
             name="login"
@@ -36,11 +75,19 @@ export class ProfileForm extends Component {
             onFieldChange={{onFieldChange}}
           />
           <InputField
-            value="{{props.profile.email}}"
-            name="email"
-            id="email"
-            type="email"
-            title="Email"
+            value="{{props.profile.displayName}}"
+            name="displayName"
+            id="displayName"
+            type="text"
+            title="Display name"
+            onFieldChange={{onFieldChange}}
+          />
+          <InputField
+            value="{{props.profile.phone}}"
+            name="phone"
+            id="phone"
+            type="tel"
+            title="Телефон"
             onFieldChange={{onFieldChange}}
           />
           <InputField
@@ -64,7 +111,7 @@ export class ProfileForm extends Component {
             name="rePassword"
             id="rePassword"
             type="password"
-            title="Подтверждение пароля"
+            title="Повторите пароль"
             onFieldChange={{onFieldChange}}
           />
           </div>
@@ -75,8 +122,9 @@ export class ProfileForm extends Component {
       </div>
       `,
       {
-        onFieldChange: this.profileStore.onFieldChange,
-        onSubmit: this.profileStore.onFormSubmit,
+        onChangeAvatar: this.onChangeAvatar,
+        onFieldChange: this.profileStore.onChange,
+        onSubmit: this.profileStore.updateUser,
       },
     ];
   }

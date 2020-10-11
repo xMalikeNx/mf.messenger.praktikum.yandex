@@ -4,15 +4,16 @@ import { getFirstLitera } from '../../utils/getFirstLitera';
 
 import './dialogListItem.scss';
 
-type DialogListItemProps = {
-  id: number | string;
-  userName: string;
+type TDialogListItemProps = {
+  id: number;
+  title: string;
+  avatar?: string;
   onClick: (dialogId: number) => void;
 };
 
-export class DialogListItem extends Component {
+export class DialogListItem extends Component<unknown, TDialogListItemProps> {
   onSelectDialog = (): void => {
-    const { onClick, id } = this.props as DialogListItemProps;
+    const { onClick, id } = this.props;
 
     if (typeof onClick === 'function') {
       onClick(typeof id === 'number' ? id : parseInt(id));
@@ -20,10 +21,8 @@ export class DialogListItem extends Component {
   };
 
   render(): [string, StateType?] {
-    const firstLitera = getFirstLitera(
-      (this.props as DialogListItemProps).userName
-    );
-
+    const firstLitera = getFirstLitera(this.props.title);
+    
     return [
       `
       <li onClick={{onSelectDialog}}>
@@ -34,29 +33,12 @@ export class DialogListItem extends Component {
             class="dialog-item"
             {% endif %}
         >
-        <Avatar background="{{props.background}}" title="{{firstLitera}}" />
+        <Avatar url={{props.avatar}} title="{{firstLitera}}" />
         <div class="dialog-item__info">
           <div class="dialog-item__username">
-            {{props.userName}}
-          </div>
-          <div class="dialog-item__message">
-            {{props.lastMessage}}
+            {{props.title}}
           </div>
         </div>
-          <div class="dialog-item__status-block">
-            {% if props.isMy %}
-              <span class="dialog-item__check">
-                <img src="/img/icons/check.svg" alt="check" />
-              </span>
-            {% else %}
-              <div class="dialog-item__indicator">
-                {{props.unreadCount}}
-              </div>
-            {% endif %}    
-              <time class="dialog-item__time">
-                  {{props.time}}
-              </time>
-          </div>
         </div>
       </li>
       `,

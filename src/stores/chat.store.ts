@@ -1,6 +1,5 @@
-import { parseJSON } from '../core/Request/utils';
 import { Store } from '../core/Store';
-import { Api } from '../utils/Api';
+import chatMock from './mock/chat.mock';
 
 export type DialogMessageType = {
   id: number | string;
@@ -10,41 +9,12 @@ export type DialogMessageType = {
 };
 
 export class ChatStore extends Store {
-  private api: Api;
-
   constructor() {
     super();
     this._displayName = 'chat';
     this.state = {
-      loading: true,
-      messages: [],
+      loading: false,
+      messages: chatMock,
     };
-    this.api = new Api();
   }
-
-  fetchMessagesFromDialog = async (dialogId: number): Promise<void> => {
-    this.updateState({
-      loading: true,
-    });
-    const res = await this.api.get(`mock/messages${dialogId}.json`);
-    const items = parseJSON(res.responseText);
-    if (items.isOk) {
-      this.updateState({
-        messages: items.result,
-        loading: false,
-      });
-    }
-  };
-
-  createChat = async (title: string): Promise<void> => {
-    try {
-      await this.api.post(`chats`, {
-        body: {
-          title,
-        },
-      });
-    } catch (err) {
-      alert('Не удалось создать чат');
-    }
-  };
 }
