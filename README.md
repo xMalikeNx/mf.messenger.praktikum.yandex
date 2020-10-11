@@ -16,3 +16,6 @@
 
 А еще есть ссылочка на Netlify, где работает уже запущенный проект
 `https://epic-villani-e3a49f.netlify.app/`
+
+И на heroku
+`https://mnmessager.herokuapp.com/`
