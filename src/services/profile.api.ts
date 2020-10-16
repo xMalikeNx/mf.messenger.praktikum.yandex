@@ -12,7 +12,7 @@ export class ProfileApi extends Api {
     });
   };
 
-  updateUser = (userInfo: Partial<TUserDto>): Promise<XMLHttpRequest> => {
+  updateUserInfo = (userInfo: Partial<TUserDto>): Promise<XMLHttpRequest> => {
     return this.put('user/profile', {
       body: {
         ...userInfo,

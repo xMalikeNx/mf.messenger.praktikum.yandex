@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const PrettierWebpackPlugin = require('prettier-webpack-plugin');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {

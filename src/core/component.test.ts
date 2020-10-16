@@ -1,5 +1,5 @@
-import { Button, InputField } from '../src/components/index';
-import { MNTemplator } from '../src/core/templator/Templator';
+import { Button, InputField } from '../components';
+import { MNTemplator } from './templator/Templator';
 
 let templator: MNTemplator;
 beforeAll(() => {

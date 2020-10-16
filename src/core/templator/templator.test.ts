@@ -1,5 +1,5 @@
-import { Component } from '../src/core/Component';
-import { MNTemplator } from '../src/core/templator/Templator';
+import { Component } from '../Component';
+import { MNTemplator } from './Templator';
 
 const templator = MNTemplator.getInstance();
 
@@ -98,7 +98,7 @@ describe('Templator', () => {
     const testComponent = new TestComponent({
       name: 'Maliken',
     });
-    let el = templator.compileTemplate(
+    const el = templator.compileTemplate(
       testComponent.render()[0],
       testComponent
     );

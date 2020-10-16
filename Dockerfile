@@ -8,5 +8,4 @@ RUN cd /app
 RUN npm ci --production
 EXPOSE 80
 
-CMD npm run build 
-CMD npm start
+CMD npm run build && npm start

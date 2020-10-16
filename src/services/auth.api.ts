@@ -35,8 +35,9 @@ export class AuthApi extends Api {
   }
 
   async getUserInfo(): Promise<TUserInfo> {
-    const res = (await this.get('auth/user')).responseText;
-    const { isOk, result } = parseJSON<TUserDto>(res);
+
+    const { responseText } =await this.get('auth/user');
+    const { isOk, result } = parseJSON<TUserDto>(responseText);
     if (!isOk || !result) {
       throw new Error('JSON is not valid!');
     }

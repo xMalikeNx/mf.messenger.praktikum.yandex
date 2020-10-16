@@ -1,5 +1,5 @@
-import { Component } from '../src/core/Component';
-import { Router } from '../src/core/Router/Router';
+import { Component } from '../Component';
+import { Router } from './Router';
 
 const router = Router.getInstance();
 

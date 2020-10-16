@@ -63,7 +63,7 @@ export class ProfileStore extends Store<TProfileState> {
         userInfo.password = state.newPassword;
       }
 
-      await this.api.updateUser(userInfo);
+      await this.api.updateUserInfo(userInfo);
       (AuthStore.getInstance() as AuthStore).getUserInfo();
       (UiStore.getInstance() as UiStore).showNotification(
         'Профиль пользователя успешно обновлен',

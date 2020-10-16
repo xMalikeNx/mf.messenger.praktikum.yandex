@@ -13,8 +13,8 @@ export class DialogsApi extends Api {
   }
 
   async fetchDialogs(): Promise<DialogItemType[]> {
-    const res = (await this.get('chats')).responseText;
-    const result = parseJSON<DialogItemType[]>(res);
+    const { responseText } = await this.get('chats');
+    const result = parseJSON<DialogItemType[]>(responseText);
     if (result.isOk && result.result) {
       return result.result;
     }
@@ -23,8 +23,8 @@ export class DialogsApi extends Api {
   }
 
   async fetchChatUsers(chatId: number): Promise<TUserInfo[]> {
-    const res = (await this.get(`chats/${chatId}/users`)).responseText;
-    const result = parseJSON<TUserInfo[]>(res);
+    const { responseText } = await this.get(`chats/${chatId}/users`);
+    const result = parseJSON<TUserInfo[]>(responseText);
     if (!result.isOk || !result.result) {
       throw new Error('Json is not valid');
     }
